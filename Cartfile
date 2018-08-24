@@ -1,0 +1,11 @@
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.json"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseCrashBinary.json"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAuthBinary.json"
+github "iziz/libPhoneNumber-iOS"
+github "DaveWoodCom/XCGLogger" ~> 6.0.4
+github "Alamofire/Alamofire" ~> 4.7
+github "aws/aws-sdk-ios"
+
+github "stephencelis/SQLite.swift" 
+github "ashleymills/Reachability.swift" 
+github "google/promises"
