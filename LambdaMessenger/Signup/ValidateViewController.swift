@@ -32,33 +32,42 @@ class ValidateViewController: UIViewController {
             withVerificationID: verificationID,
             verificationCode: code)
         
-        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
-            if let error = error {
-                self.log.error(error)
-                return
+        
+        AuthManager.signIn(withCredential: credential)
+            .then{ _ in
+                return AuthManager.updateDisplayName(self.displayName!)
             }
-            
-            AuthManager.updateDisplayName(self.displayName!)
-                .then{ user in
-                    return AuthManager.getIDToken(forceRefresh: true, user: user)
+            .then{ user in
+                // Firebase requires a token to be refreshed after updating the
+                // displayName. Otherwise, the JWT token will be sent without
+                // it, causing an Authentication error
+                return AuthManager.getIDToken(forceRefresh: true, user: user)
+            }
+            .then{ _ in
+                return ApiManager.default.registerUserWithPhoneNumber()
+            }
+            .recover { error throws -> Promises.Promise<User> in
+                if let pn = Auth.auth().currentUser?.phoneNumber {
+                    return ApiManager.default.lookupUserByPhoneNumber(phoneNumber: pn)
                 }
-                .then{ _ in
-                    return ApiManager.default.registerUserWithPhoneNumber()
+                return Promises.Promise<User>(error)
+            }
+            .then{ user -> Promises.Promise<User> in
+                if let registeredName = Auth.auth().currentUser?.displayName,
+                    let requestedName = self.displayName, registeredName != requestedName {
+                    return ApiManager.default.updateUser(displayName: requestedName)
                 }
-                .recover { error throws -> Promises.Promise<User> in
-                    if let pn = Auth.auth().currentUser?.phoneNumber {
-                        return ApiManager.default.lookupUserByPhoneNumber(phoneNumber: pn)
-                    }
-                    return Promises.Promise<User>(error)
+                else {
+                    return Promises.Promise<User>(user)
                 }
-                .then{ _ in
-                    self.performSegue(withIdentifier: "GoSegue", sender: self)
-                }
-                .catch{ error in
-                    self.log.error(error)
-                }
-            
+            }
+            .then{ _ in
+                self.performSegue(withIdentifier: "GoSegue", sender: self)
+            }
+            .catch{ error in
+                self.log.error(error)
         }
+        
         
         return
     }

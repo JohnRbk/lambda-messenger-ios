@@ -6,7 +6,7 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "outline_settings_black_18dp.png",
+      "filename" : "settings.pdf",
       "scale" : "2x"
     },
     {
@@ -17,5 +17,8 @@
   "info" : {
     "version" : 1,
     "author" : "xcode"
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
   }
 }

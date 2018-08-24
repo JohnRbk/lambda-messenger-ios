@@ -11,6 +11,22 @@ import FirebaseAuth
 
 class SettingsViewController: UIViewController {
     
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailOrPhoneLabel: UILabel!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let user = Auth.auth().currentUser, let name = user.displayName {
+            self.nameLabel.text = name
+            if let phoneNumber = user.phoneNumber {
+                self.emailOrPhoneLabel.text = phoneNumber
+            }
+            else if let email = user.email {
+                self.emailOrPhoneLabel.text = email
+            }            
+        }
+    }
+    
     @IBAction func signOut(_ sender: Any) {
         let firebaseAuth = Auth.auth()
         do {

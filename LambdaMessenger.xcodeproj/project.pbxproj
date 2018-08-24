@@ -27,7 +27,7 @@
 		7449B1E0211B6CEB009F2EB8 /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1DE211B6CEB009F2EB8 /* GoogleToolboxForMac.framework */; };
 		7449B1E2211B6D3B009F2EB8 /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1E1211B6D3A009F2EB8 /* Protobuf.framework */; };
 		7449B1E4211B6D51009F2EB8 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1E3211B6D51009F2EB8 /* FirebaseInstanceID.framework */; };
-		7449B1EF211B6E51009F2EB8 /* ChatSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449B1E6211B6E51009F2EB8 /* ChatSessionViewController.swift */; };
+		7449B1EF211B6E51009F2EB8 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449B1E6211B6E51009F2EB8 /* ConversationViewController.swift */; };
 		7449B1F0211B6E51009F2EB8 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449B1E7211B6E51009F2EB8 /* DashboardViewController.swift */; };
 		7449B1F2211B6E51009F2EB8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449B1E9211B6E51009F2EB8 /* SettingsViewController.swift */; };
 		7449B1F3211B6E51009F2EB8 /* ReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449B1EB211B6E51009F2EB8 /* ReadyViewController.swift */; };
@@ -53,6 +53,7 @@
 		746ABA05211D76B0006D73BD /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 746AB9FA211D7689006D73BD /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		747D3E3B212F890C0089703E /* FBLPromises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E7FE96211DCE84004E8092 /* FBLPromises.framework */; };
 		747D3E3C212F890C0089703E /* FBLPromises.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 74E7FE96211DCE84004E8092 /* FBLPromises.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		747D3E3E21303C730089703E /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747D3E3D21303C730089703E /* MessageCell.swift */; };
 		7480B39F211B481F00A147E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7480B39E211B481F00A147E5 /* GoogleService-Info.plist */; };
 		7482992F212F7F3E00CFA57D /* AWSAppSyncSubscriptionWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748298E4212F7F3E00CFA57D /* AWSAppSyncSubscriptionWatcher.swift */; };
 		74829930212F7F3E00CFA57D /* AWSAppSyncSubscriptionWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748298E4212F7F3E00CFA57D /* AWSAppSyncSubscriptionWatcher.swift */; };
@@ -234,7 +235,7 @@
 		7449B1DE211B6CEB009F2EB8 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleToolboxForMac.framework; path = Carthage/Build/iOS/GoogleToolboxForMac.framework; sourceTree = SOURCE_ROOT; };
 		7449B1E1211B6D3A009F2EB8 /* Protobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Protobuf.framework; path = Carthage/Build/iOS/Protobuf.framework; sourceTree = SOURCE_ROOT; };
 		7449B1E3211B6D51009F2EB8 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Carthage/Build/iOS/FirebaseInstanceID.framework; sourceTree = SOURCE_ROOT; };
-		7449B1E6211B6E51009F2EB8 /* ChatSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatSessionViewController.swift; sourceTree = "<group>"; };
+		7449B1E6211B6E51009F2EB8 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		7449B1E7211B6E51009F2EB8 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		7449B1E9211B6E51009F2EB8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7449B1EB211B6E51009F2EB8 /* ReadyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadyViewController.swift; sourceTree = "<group>"; };
@@ -250,6 +251,7 @@
 		746AB933211D6E15006D73BD /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCore.framework; path = Carthage/Build/iOS/AWSCore.framework; sourceTree = SOURCE_ROOT; };
 		746AB9FA211D7689006D73BD /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = Carthage/Build/iOS/SQLite.framework; sourceTree = SOURCE_ROOT; };
 		746AB9FB211D7689006D73BD /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = Carthage/Build/iOS/Reachability.framework; sourceTree = SOURCE_ROOT; };
+		747D3E3D21303C730089703E /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		7480B39B211B44DD00A147E5 /* LambdaMessenger-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LambdaMessenger-Bridging-Header.h"; sourceTree = "<group>"; };
 		7480B39E211B481F00A147E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		748298E3212F7F3E00CFA57D /* AWSAppSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSAppSync.h; sourceTree = "<group>"; };
@@ -451,10 +453,11 @@
 		7449B1E5211B6E51009F2EB8 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				7449B1E6211B6E51009F2EB8 /* ChatSessionViewController.swift */,
+				7449B1E6211B6E51009F2EB8 /* ConversationViewController.swift */,
 				7449B1E7211B6E51009F2EB8 /* DashboardViewController.swift */,
 				7449B1E9211B6E51009F2EB8 /* SettingsViewController.swift */,
 				746AB91D211C71D2006D73BD /* ComposeMessageViewController.swift */,
+				747D3E3D21303C730089703E /* MessageCell.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -791,6 +794,7 @@
 				74829967212F7F3E00CFA57D /* Promise.swift in Sources */,
 				74829981212F7F3E00CFA57D /* AWSAppSyncClientConflictResolutionExtensions.swift in Sources */,
 				74829993212F7F3E00CFA57D /* AWSMQTTDecoder.m in Sources */,
+				747D3E3E21303C730089703E /* MessageCell.swift in Sources */,
 				7482997B212F7F3E00CFA57D /* NetworkTransport.swift in Sources */,
 				7482999D212F7F3E00CFA57D /* AWSNetworkTransport.swift in Sources */,
 				7482992F212F7F3E00CFA57D /* AWSAppSyncSubscriptionWatcher.swift in Sources */,
@@ -813,7 +817,7 @@
 				74829997212F7F3E00CFA57D /* AWSIoTKeychain.m in Sources */,
 				7482993D212F7F3E00CFA57D /* GraphQLResponse.swift in Sources */,
 				74829959212F7F3E00CFA57D /* AsynchronousOperation.swift in Sources */,
-				7449B1EF211B6E51009F2EB8 /* ChatSessionViewController.swift in Sources */,
+				7449B1EF211B6E51009F2EB8 /* ConversationViewController.swift in Sources */,
 				7402C2B0211A850B00C3D536 /* AppDelegate.swift in Sources */,
 				74829945212F7F3E00CFA57D /* GraphQLResultAccumulator.swift in Sources */,
 				74829935212F7F3E00CFA57D /* AppSyncMQTTClient.swift in Sources */,

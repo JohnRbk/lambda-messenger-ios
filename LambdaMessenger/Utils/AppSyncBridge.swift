@@ -19,12 +19,7 @@ public protocol Message {
     var message: String { get }
     var timestamp: String { get }
     var sender: String { get }
-}
-
-public struct UserMessage: Message {
-    public var message: String    
-    public var timestamp: String
-    public var sender: String
+    var conversationId: String { get }
 }
 
 public struct Conversation {
@@ -52,8 +47,10 @@ extension LookupUserByPhoneNumberQuery.Data.LookupUserByPhoneNumber: User {
         return nil
     }
 }
+extension InitiateConversationMutation.Data.InitiateConversation: Message {}
 extension NewMessageSubscription.Data.NewMessage: Message {}
 extension ConversationFields.Message: Message {}
+extension UpdateUserMutation.Data.UpdateUser: User {}
 extension ConversationFields.User : User {}
 extension RegisterUserWithEmailMutation.Data.RegisterUserWithEmail: User {
     public var phoneNumber: String? {

@@ -81,6 +81,27 @@ public class AuthManager {
         return promise
     }
     
+    static func signIn(withCredential credential: PhoneAuthCredential) -> Promises.Promise<Firebase.User> {
+        let promise = Promises.Promise<Firebase.User> { fulfill, reject in
+            
+            func signInHandler(result: AuthDataResult?, error: Error?) {
+                switch (error, result) {
+                case let (.some(error), nil):
+                    reject(error)
+                case let (nil, .some(result)):
+                    fulfill(result.user)
+                default:
+                    reject(LambdaMessengerError.systemError)
+                }
+            }
+            
+            Auth.auth().signInAndRetrieveData(with: credential, completion: signInHandler)
+            
+        }
+        
+        return promise
+    }
+    
     static func signIn(withEmail email: String, password: String) -> Promises.Promise<Firebase.User> {
         
         let promise = Promises.Promise<Firebase.User> { fulfill, reject in

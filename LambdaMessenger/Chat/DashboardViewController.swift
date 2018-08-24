@@ -23,7 +23,7 @@ extension DashboardViewController {
     
     @objc func initiateConversationModalComplete(_ notification: Notification) {
         if let cid = notification.object as? String {
-            self.performSegue(withIdentifier: "ChatSessionSegue", sender: cid)
+            self.performSegue(withIdentifier: "ConversationSegue", sender: cid)
         } else {
             fatalError("Unknown annotation type")
         }
@@ -40,9 +40,6 @@ class DashboardViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Chats"
-        
-        // Setup all the NSNotification evends
         self.initializeEvents()
     }
     
@@ -56,12 +53,12 @@ class DashboardViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.topItem?.title = "Chats"
+        //self.navigationController?.navigationBar.topItem?.title = "Chats"
         
         self.manager.getConversationHistory().then { conversations in
-            self.log.info(conversations)
-            self.log.info(conversations.count)
-            self.conversations = conversations
+            self.conversations = conversations.filter({ c -> Bool in
+                c.messages.count > 0
+            })
             self.tableView.reloadData()
         }
         
@@ -72,13 +69,7 @@ class DashboardViewController: UITableViewController {
         
         let composeViewController = mainStoryboard.instantiateViewController(withIdentifier: "ComposeMessage") as! ComposeMessageViewController
         
-        self.present(composeViewController, animated: true) {
-//            self.log.info(composeViewController.conversationId)
-//            
-//            if let _ = self.composeConversationId {
-//                self.performSegue(withIdentifier: "ChatSessionSegue", sender: self)
-//            }
-        }
+        self.present(composeViewController, animated: true)
         
     }
     
@@ -87,7 +78,7 @@ class DashboardViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? ChatSessionViewController, let cid = sender as? String{
+        if let vc = segue.destination as? ConversationViewController, let cid = sender as? String{
             vc.conversationId = cid
         }
         
@@ -124,10 +115,10 @@ extension DashboardViewController /* UITableView */ {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath)
         
-        
-        let mostRecentMessage = self.conversations[i].messages[0]
+        let mostRecentMessage = self.conversations[i].messages.last!
         let conversationUsers = self.conversations[i].users
-        
+        self.log.info(mostRecentMessage)
+        self.log.info(conversationUsers)
         if let u = conversationUsers.first(where: { $0.userId == mostRecentMessage.sender }) {
             cell.textLabel?.text = u.displayName
         }
@@ -144,7 +135,7 @@ extension DashboardViewController /* UITableView */ {
         let i = indexPath.row
         //let section = indexPath.section
         
-        self.performSegue(withIdentifier: "ChatSessionSegue", sender: conversations[i].conversationId)
+        self.performSegue(withIdentifier: "ConversationSegue", sender: conversations[i].conversationId)
         
     }
 }

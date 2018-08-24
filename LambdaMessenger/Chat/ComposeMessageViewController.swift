@@ -26,19 +26,20 @@ class ComposeMessageViewController: UIViewController {
     @IBAction func tappedDone(_ sender: Any) {
         
         let manager = ApiManager.default
-//        self.log.info("email: \(Auth.auth().currentUser?.email)")
-//        self.log.info("name: \(Auth.auth().currentUser?.displayName)")
-//        self.log.info("phone: \(Auth.auth().currentUser?.phoneNumber)")
-//        self.log.info("uid: \(Auth.auth().currentUser?.uid)")
-//
-        manager.lookupUserByPhoneNumber(phoneNumber: userTextField.text!)
-            .then { user-> Promises.Promise<String> in                
-                return manager.initiateConversation(others: [user.userId])
+
+        guard let introMessage = messageTextField.text, let phoneNumber = userTextField.text else {
+            self.log.error("Required fields not set")
+            return
+        }
+        
+        manager.lookupUserByPhoneNumber(phoneNumber: phoneNumber)
+            .then { user-> Promises.Promise<Message> in
+                return manager.initiateConversation(others: [user.userId], message: introMessage)
             }
-            .then { conversationId in
+            .then { newConversationMessage in
                
                 self.dismiss(animated: true, completion: {
-                    NotificationCenter.default.post(name: DashboardViewController.Events.initiateConversationModalComplete.notification, object: conversationId)
+                    NotificationCenter.default.post(name: DashboardViewController.Events.initiateConversationModalComplete.notification, object: newConversationMessage.conversationId)
                 })
                 
             }

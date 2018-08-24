@@ -118,7 +118,7 @@ public class ApiManager {
                 case let (nil, .some(result)) where result.errors != nil:
                     reject(result.errors![0])
                 case let (nil, .some(result)) where result.data?.postMessage != nil:
-                    fulfill(result.data!.postMessage!.timestamp)
+                    fulfill(result.data!.postMessage.timestamp)
                 default:
                     reject(LambdaMessengerError.systemError)
                 }
@@ -161,7 +161,9 @@ public class ApiManager {
             }
             
             self.log.info("Performing getConversationHistory query")
-            self.client?.fetch(query: conversationHistory, resultHandler: historyHandler)
+            self.client?.fetch(query: conversationHistory,
+                               cachePolicy: .fetchIgnoringCacheData,
+                               resultHandler: historyHandler)
             
         }
         
@@ -169,6 +171,34 @@ public class ApiManager {
         
     }
 
+    public func updateUser(displayName: String) -> Promises.Promise<User> {
+        
+        let register = UpdateUserMutation(displayName: displayName)
+        
+        let promise = Promises.Promise<User> { fulfill, reject in
+            
+            func registerHandler(result: GraphQLResult<UpdateUserMutation.Data>?,
+                                 error: Error?) {
+                switch (error, result) {
+                case let (.some(error), nil):
+                    reject(error)
+                case let (nil, .some(result)) where result.errors != nil:
+                    reject(result.errors![0])
+                case let (nil, .some(result)) where result.data?.updateUser != nil:
+                    fulfill(result.data!.updateUser!)
+                default:
+                    reject(LambdaMessengerError.systemError)
+                }
+            }
+            
+            self.log.info("Performing updateUser mutation")
+            self.client?.perform(mutation: register, resultHandler: registerHandler)
+            
+        }
+        
+        return promise
+        
+    }
     
     public func registerUserWithPhoneNumber() -> Promises.Promise<User> {
         
@@ -282,7 +312,9 @@ public class ApiManager {
             }
             
             self.log.info("Performing getConversation query")
-            self.client?.fetch(query: lookup, resultHandler: conversationHandler)
+            self.client?.fetch(query: lookup,
+                               cachePolicy: .fetchIgnoringCacheData,
+                               resultHandler: conversationHandler)
             
         }
         
@@ -313,7 +345,9 @@ public class ApiManager {
             }
             
             self.log.info("Performing lookupUserByPhoneNumber query")
-            self.client?.fetch(query: lookup, resultHandler: phoneLookupHandler)
+            self.client?.fetch(query: lookup,
+                               cachePolicy: .fetchIgnoringCacheData,
+                               resultHandler: phoneLookupHandler)
             
         }
         
@@ -321,11 +355,11 @@ public class ApiManager {
         
     }
 
-    public func initiateConversation(others: [String]) -> Promises.Promise<String> {
+    public func initiateConversation(others: [String], message: String) -> Promises.Promise<Message> {
 
-        let initiate = InitiateConversationMutation(others: others)
+        let initiate = InitiateConversationMutation(others: others, message: message)
 
-        let promise = Promises.Promise<String> { fulfill, reject in
+        let promise = Promises.Promise<Message> { fulfill, reject in
 
             func initiateConversationHandler(result: GraphQLResult<InitiateConversationMutation.Data>?,
                                              error: Error?) {
@@ -334,8 +368,8 @@ public class ApiManager {
                     reject(error)
                 case let (nil, .some(result)) where result.errors != nil:
                     reject(result.errors![0])
-                case let (nil, .some(result)) where result.data != nil:
-                    fulfill(result.data!.initiateConversation) // ConversationID
+                case let (nil, .some(result)) where result.data?.initiateConversation != nil:
+                    fulfill(result.data!.initiateConversation) // Message
                 default:
                     reject(LambdaMessengerError.systemError)
                 }
