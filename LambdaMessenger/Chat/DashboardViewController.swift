@@ -53,9 +53,10 @@ class DashboardViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //self.navigationController?.navigationBar.topItem?.title = "Chats"
-        
+      
         self.manager.getConversationHistory().then { conversations in
+            self.log.info("Got convos: ")
+            self.log.info(conversations)
             self.conversations = conversations.filter({ c -> Bool in
                 c.messages.count > 0
             })
@@ -115,16 +116,17 @@ extension DashboardViewController /* UITableView */ {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath)
         
-        let mostRecentMessage = self.conversations[i].messages.last!
-        let conversationUsers = self.conversations[i].users
-        self.log.info(mostRecentMessage)
-        self.log.info(conversationUsers)
-        if let u = conversationUsers.first(where: { $0.userId == mostRecentMessage.sender }) {
-            cell.textLabel?.text = u.displayName
+        if let me = Auth.auth().currentUser {
+            let otherPerson = self.conversations[i].users.first { $0.userId != me.uid }
+            
+            let mostRecentMessage = self.conversations[i].messages.last!
+            cell.textLabel?.text = otherPerson?.displayName
+            cell.detailTextLabel?.text = mostRecentMessage.message
+            return cell
         }
         
-        cell.detailTextLabel?.text = mostRecentMessage.message
-        return cell
+        self.log.error("not logged in?")
+        return UITableViewCell()
         
         
     }

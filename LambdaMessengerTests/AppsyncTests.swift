@@ -10,7 +10,6 @@ import XCTest
 import XCGLogger
 import Firebase
 import Promises
-import AWSAppSync
 
 @testable import LambdaMessenger
 
@@ -98,6 +97,9 @@ class AppsyncTests: XCTestCase {
         let password = "abc123"
         
         TestUtils.createFirebaseUserWithEmail(email: email, password: password, displayName: "John")
+            .then { _ in
+                return AuthManager.signIn(withEmail: email, password: password)
+            }
             .then { _ -> Promises.Promise<User> in
                 return manager.registerUserWithEmail()
             }
@@ -174,6 +176,7 @@ class AppsyncTests: XCTestCase {
                         return AuthManager.signIn(withEmail: john.email!, password: password)
                     }
                     .then { _ -> Promises.Promise<Conversation> in
+                        self.log.info("getting convo for user \(Auth.auth().currentUser?.uid), cid: \(cid)")
                         return manager.getConversation(conversationId: cid)
                     }
                     .then { convo in

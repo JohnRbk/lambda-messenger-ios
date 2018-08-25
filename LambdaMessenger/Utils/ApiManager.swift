@@ -13,6 +13,7 @@ import Firebase
 // must be namespaced
 //import AWSAppSync
 import XCGLogger
+import AWSCore
 
 extension Formatter {
     static let iso8601: ISO8601DateFormatter = {
@@ -83,8 +84,9 @@ public class ApiManager {
                     self.log.error(error)
                 case let (nil, .some(result)) where result.errors != nil:
                     self.log.error(result.errors![0])
-                case let (nil, .some(result)) where result.data?.newMessage != nil:
-                    callback(result.data!.newMessage!)
+                case let (nil, .some(result)) where result.data?.newMessage?.fragments.messageFields != nil:
+                    let m = Message(result.data!.newMessage!.fragments.messageFields)
+                    callback(m)
                 default:
                     self.log.error("Unable to process subscription message")
                 }
@@ -185,7 +187,7 @@ public class ApiManager {
                 case let (nil, .some(result)) where result.errors != nil:
                     reject(result.errors![0])
                 case let (nil, .some(result)) where result.data?.updateUser != nil:
-                    fulfill(result.data!.updateUser!)
+                    fulfill(result.data!.updateUser)
                 default:
                     reject(LambdaMessengerError.systemError)
                 }
@@ -214,7 +216,7 @@ public class ApiManager {
                 case let (nil, .some(result)) where result.errors != nil:
                     reject(result.errors![0])
                 case let (nil, .some(result)) where result.data?.registerUserWithPhoneNumber != nil:
-                    fulfill(result.data!.registerUserWithPhoneNumber!)
+                    fulfill(result.data!.registerUserWithPhoneNumber)
                 default:
                     reject(LambdaMessengerError.systemError)
                 }
@@ -243,7 +245,7 @@ public class ApiManager {
                 case let (nil, .some(result)) where result.errors != nil:
                     reject(result.errors![0])
                 case let (nil, .some(result)) where result.data?.registerUserWithEmail != nil:
-                    fulfill(result.data!.registerUserWithEmail!)
+                    fulfill(result.data!.registerUserWithEmail)
                 default:
                     reject(LambdaMessengerError.systemError)
                 }
@@ -267,6 +269,7 @@ public class ApiManager {
                                     error: Error?)  {
                 switch (error, result) {
                 case let (.some(error), nil):
+                    self.log.error(error)
                     reject(error)
                 case let (nil, .some(result)) where result.errors != nil:
                     reject(result.errors![0])
@@ -355,11 +358,11 @@ public class ApiManager {
         
     }
 
-    public func initiateConversation(others: [String], message: String) -> Promises.Promise<Message> {
+    public func initiateConversation(others: [String]) -> Promises.Promise<String> {
 
-        let initiate = InitiateConversationMutation(others: others, message: message)
+        let initiate = InitiateConversationMutation(others: others)
 
-        let promise = Promises.Promise<Message> { fulfill, reject in
+        let promise = Promises.Promise<String> { fulfill, reject in
 
             func initiateConversationHandler(result: GraphQLResult<InitiateConversationMutation.Data>?,
                                              error: Error?) {
@@ -368,8 +371,9 @@ public class ApiManager {
                     reject(error)
                 case let (nil, .some(result)) where result.errors != nil:
                     reject(result.errors![0])
-                case let (nil, .some(result)) where result.data?.initiateConversation != nil:
-                    fulfill(result.data!.initiateConversation) // Message
+                case let (nil, .some(result))
+                    where result.data?.initiateConversation != nil:
+                    fulfill(result.data!.initiateConversation) // ConversationID
                 default:
                     reject(LambdaMessengerError.systemError)
                 }

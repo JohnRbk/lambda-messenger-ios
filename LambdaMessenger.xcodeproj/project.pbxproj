@@ -54,9 +54,11 @@
 		747D3E3B212F890C0089703E /* FBLPromises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E7FE96211DCE84004E8092 /* FBLPromises.framework */; };
 		747D3E3C212F890C0089703E /* FBLPromises.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 74E7FE96211DCE84004E8092 /* FBLPromises.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		747D3E3E21303C730089703E /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747D3E3D21303C730089703E /* MessageCell.swift */; };
+		747D3E3F2131754D0089703E /* AWSAppSyncSubscriptionWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748298E4212F7F3E00CFA57D /* AWSAppSyncSubscriptionWatcher.swift */; };
+		747D3E40213175E30089703E /* AWSIoTMQTTClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 74829914212F7F3E00CFA57D /* AWSIoTMQTTClient.m */; };
+		747D3E452131D4A90089703E /* DependentFieldTextDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747D3E442131D4A90089703E /* DependentFieldTextDelegate.swift */; };
 		7480B39F211B481F00A147E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7480B39E211B481F00A147E5 /* GoogleService-Info.plist */; };
 		7482992F212F7F3E00CFA57D /* AWSAppSyncSubscriptionWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748298E4212F7F3E00CFA57D /* AWSAppSyncSubscriptionWatcher.swift */; };
-		74829930212F7F3E00CFA57D /* AWSAppSyncSubscriptionWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748298E4212F7F3E00CFA57D /* AWSAppSyncSubscriptionWatcher.swift */; };
 		74829931212F7F3E00CFA57D /* AWSAppSyncAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748298E5212F7F3E00CFA57D /* AWSAppSyncAuthProvider.swift */; };
 		74829932212F7F3E00CFA57D /* AWSAppSyncAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748298E5212F7F3E00CFA57D /* AWSAppSyncAuthProvider.swift */; };
 		74829933212F7F3E00CFA57D /* AWSS3ObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748298E6212F7F3E00CFA57D /* AWSS3ObjectProtocol.swift */; };
@@ -129,7 +131,6 @@
 		74829976212F7F3E00CFA57D /* ApolloClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7482990B212F7F3E00CFA57D /* ApolloClient.swift */; };
 		74829977212F7F3E00CFA57D /* RecordSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7482990C212F7F3E00CFA57D /* RecordSet.swift */; };
 		74829978212F7F3E00CFA57D /* RecordSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7482990C212F7F3E00CFA57D /* RecordSet.swift */; };
-		7482997A212F7F3E00CFA57D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7482990D212F7F3E00CFA57D /* Info.plist */; };
 		7482997B212F7F3E00CFA57D /* NetworkTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7482990E212F7F3E00CFA57D /* NetworkTransport.swift */; };
 		7482997C212F7F3E00CFA57D /* NetworkTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7482990E212F7F3E00CFA57D /* NetworkTransport.swift */; };
 		7482997D212F7F3E00CFA57D /* Locking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7482990F212F7F3E00CFA57D /* Locking.swift */; };
@@ -141,8 +142,6 @@
 		74829983212F7F3E00CFA57D /* AWSIoTCSR.m in Sources */ = {isa = PBXBuildFile; fileRef = 74829913212F7F3E00CFA57D /* AWSIoTCSR.m */; };
 		74829984212F7F3E00CFA57D /* AWSIoTCSR.m in Sources */ = {isa = PBXBuildFile; fileRef = 74829913212F7F3E00CFA57D /* AWSIoTCSR.m */; };
 		74829985212F7F3E00CFA57D /* AWSIoTMQTTClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 74829914212F7F3E00CFA57D /* AWSIoTMQTTClient.m */; };
-		74829986212F7F3E00CFA57D /* AWSIoTMQTTClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 74829914212F7F3E00CFA57D /* AWSIoTMQTTClient.m */; };
-		74829988212F7F3E00CFA57D /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 74829918212F7F3E00CFA57D /* LICENSE */; };
 		74829989212F7F3E00CFA57D /* AWSSRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 74829919212F7F3E00CFA57D /* AWSSRWebSocket.m */; };
 		7482998A212F7F3E00CFA57D /* AWSSRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 74829919212F7F3E00CFA57D /* AWSSRWebSocket.m */; };
 		7482998B212F7F3E00CFA57D /* AWSIoTWebSocketOutputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 7482991A212F7F3E00CFA57D /* AWSIoTWebSocketOutputStream.m */; };
@@ -161,7 +160,6 @@
 		74829998212F7F3E00CFA57D /* AWSIoTKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 74829929212F7F3E00CFA57D /* AWSIoTKeychain.m */; };
 		74829999212F7F3E00CFA57D /* AWSAppSyncClientS3ObjectsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7482992B212F7F3E00CFA57D /* AWSAppSyncClientS3ObjectsExtensions.swift */; };
 		7482999A212F7F3E00CFA57D /* AWSAppSyncClientS3ObjectsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7482992B212F7F3E00CFA57D /* AWSAppSyncClientS3ObjectsExtensions.swift */; };
-		7482999C212F7F3E00CFA57D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7482992C212F7F3E00CFA57D /* Info.plist */; };
 		7482999D212F7F3E00CFA57D /* AWSNetworkTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7482992D212F7F3E00CFA57D /* AWSNetworkTransport.swift */; };
 		7482999E212F7F3E00CFA57D /* AWSNetworkTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7482992D212F7F3E00CFA57D /* AWSNetworkTransport.swift */; };
 		7482999F212F7F3E00CFA57D /* AWSSQLLiteNormalizedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7482992E212F7F3E00CFA57D /* AWSSQLLiteNormalizedCache.swift */; };
@@ -252,6 +250,8 @@
 		746AB9FA211D7689006D73BD /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = Carthage/Build/iOS/SQLite.framework; sourceTree = SOURCE_ROOT; };
 		746AB9FB211D7689006D73BD /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = Carthage/Build/iOS/Reachability.framework; sourceTree = SOURCE_ROOT; };
 		747D3E3D21303C730089703E /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		747D3E43213177340089703E /* LambdaMessengerTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LambdaMessengerTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		747D3E442131D4A90089703E /* DependentFieldTextDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependentFieldTextDelegate.swift; sourceTree = "<group>"; };
 		7480B39B211B44DD00A147E5 /* LambdaMessenger-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LambdaMessenger-Bridging-Header.h"; sourceTree = "<group>"; };
 		7480B39E211B481F00A147E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		748298E3212F7F3E00CFA57D /* AWSAppSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSAppSync.h; sourceTree = "<group>"; };
@@ -420,6 +420,7 @@
 				7402C2C4211A850E00C3D536 /* LambdaMessengerTests.swift */,
 				74594A2D212879D5009208DC /* TestUtils.swift */,
 				7402C2C6211A850E00C3D536 /* Info.plist */,
+				747D3E43213177340089703E /* LambdaMessengerTests-Bridging-Header.h */,
 			);
 			path = LambdaMessengerTests;
 			sourceTree = "<group>";
@@ -480,6 +481,7 @@
 				74DB8B29212DD433003EDCEC /* AuthManager.swift */,
 				74DB8B2B212DD4B9003EDCEC /* LambdaMessengerError.swift */,
 				74DB8B2D212DD4D5003EDCEC /* AppSyncBridge.swift */,
+				747D3E442131D4A90089703E /* DependentFieldTextDelegate.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -717,9 +719,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74829988212F7F3E00CFA57D /* LICENSE in Resources */,
-				7482997A212F7F3E00CFA57D /* Info.plist in Resources */,
-				7482999C212F7F3E00CFA57D /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -777,6 +776,7 @@
 				74829957212F7F3E00CFA57D /* JSON.swift in Sources */,
 				74829969212F7F3E00CFA57D /* Record.swift in Sources */,
 				74DB8B2C212DD4B9003EDCEC /* LambdaMessengerError.swift in Sources */,
+				747D3E452131D4A90089703E /* DependentFieldTextDelegate.swift in Sources */,
 				74829943212F7F3E00CFA57D /* GraphQLDependencyTracker.swift in Sources */,
 				746AB920211D4589006D73BD /* API.swift in Sources */,
 				74DB8B2A212DD433003EDCEC /* AuthManager.swift in Sources */,
@@ -848,6 +848,7 @@
 				74829990212F7F3E00CFA57D /* AWSMQTTEncoder.m in Sources */,
 				74829954212F7F3E00CFA57D /* NormalizedCache.swift in Sources */,
 				7482993A212F7F3E00CFA57D /* AWSAppSyncClient.swift in Sources */,
+				747D3E40213175E30089703E /* AWSIoTMQTTClient.m in Sources */,
 				74E7FE95211DCA84004E8092 /* ApiManager.swift in Sources */,
 				748299A0212F7F3E00CFA57D /* AWSSQLLiteNormalizedCache.swift in Sources */,
 				7482993E212F7F3E00CFA57D /* GraphQLResponse.swift in Sources */,
@@ -868,6 +869,7 @@
 				7482998C212F7F3E00CFA57D /* AWSIoTWebSocketOutputStream.m in Sources */,
 				74594A2C21287818009208DC /* PhoneNumberUtil.swift in Sources */,
 				7482999A212F7F3E00CFA57D /* AWSAppSyncClientS3ObjectsExtensions.swift in Sources */,
+				747D3E3F2131754D0089703E /* AWSAppSyncSubscriptionWatcher.swift in Sources */,
 				74829936212F7F3E00CFA57D /* AppSyncMQTTClient.swift in Sources */,
 				74829948212F7F3E00CFA57D /* JSONStandardTypeConversions.swift in Sources */,
 				74829998212F7F3E00CFA57D /* AWSIoTKeychain.m in Sources */,
@@ -875,14 +877,12 @@
 				7482995E212F7F3E00CFA57D /* JSONSerializationFormat.swift in Sources */,
 				7482995C212F7F3E00CFA57D /* GraphQLExecutor.swift in Sources */,
 				74829932212F7F3E00CFA57D /* AWSAppSyncAuthProvider.swift in Sources */,
-				74829986212F7F3E00CFA57D /* AWSIoTMQTTClient.m in Sources */,
 				74829946212F7F3E00CFA57D /* GraphQLResultAccumulator.swift in Sources */,
 				7482996A212F7F3E00CFA57D /* Record.swift in Sources */,
 				7482998A212F7F3E00CFA57D /* AWSSRWebSocket.m in Sources */,
 				7482996C212F7F3E00CFA57D /* AWSGraphQLSubscriptionResponse.swift in Sources */,
 				7482995A212F7F3E00CFA57D /* AsynchronousOperation.swift in Sources */,
 				746AB921211D458E006D73BD /* API.swift in Sources */,
-				74829930212F7F3E00CFA57D /* AWSAppSyncSubscriptionWatcher.swift in Sources */,
 				746AB92C211D5BDA006D73BD /* AppsyncTests.swift in Sources */,
 				74829996212F7F3E00CFA57D /* AWSMQTTMessage.m in Sources */,
 				7482994A212F7F3E00CFA57D /* GraphQLResponseGenerator.swift in Sources */,
@@ -1130,7 +1130,13 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/LambdaMessenger/Frameworks",
 				);
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS/libPhoneNumberiOS.framework/Headers/";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Carthage/Build/iOS/libPhoneNumberiOS.framework/Headers/",
+					"$(PROJECT_DIR)/LambdaMessenger/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS/AWSCore.framework/Headers",
+					"$(PROJECT_DIR)/LambdaMessenger/Frameworks/aws-mobile-appsync-sdk-ios/AWSAppSyncClient/MQTTSDK/**",
+				);
 				INFOPLIST_FILE = LambdaMessengerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1139,6 +1145,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lambdamessenger.LambdaMessengerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LambdaMessengerTests/LambdaMessengerTests-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LambdaMessenger.app/LambdaMessenger";
@@ -1157,7 +1164,13 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/LambdaMessenger/Frameworks",
 				);
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS/libPhoneNumberiOS.framework/Headers/";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Carthage/Build/iOS/libPhoneNumberiOS.framework/Headers/",
+					"$(PROJECT_DIR)/LambdaMessenger/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS/AWSCore.framework/Headers",
+					"$(PROJECT_DIR)/LambdaMessenger/Frameworks/aws-mobile-appsync-sdk-ios/AWSAppSyncClient/MQTTSDK/**",
+				);
 				INFOPLIST_FILE = LambdaMessengerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1166,6 +1179,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lambdamessenger.LambdaMessengerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LambdaMessengerTests/LambdaMessengerTests-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LambdaMessenger.app/LambdaMessenger";

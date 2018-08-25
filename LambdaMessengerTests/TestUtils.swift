@@ -9,7 +9,6 @@
 import Foundation
 import Firebase
 import Promises
-import AWSAppSync
 
 struct TestUtils{
     static func randomEmail(_ name: String? = nil) -> String {

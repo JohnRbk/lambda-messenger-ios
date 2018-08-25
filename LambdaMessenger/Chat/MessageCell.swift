@@ -14,17 +14,30 @@ class MessageCell: UITableViewCell {
     @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var message: UITextView!
+    var leftAligned = true
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if leftAligned {
+            self.leadingConstraint.isActive = true
+            self.trailingConstraint.isActive = false
+            self.message.textAlignment = .left
+        }
+        else {
+            self.leadingConstraint.isActive = false
+            self.trailingConstraint.isActive = true
+            self.message.textAlignment = .right
+        }
+
+    }
     
     func makeLeftAligned(){
-        self.leadingConstraint.isActive = true
-        self.trailingConstraint.isActive = false
-        self.message.textAlignment = .left
+        leftAligned = true
+        
     }
     
     func makeRightAligned(){
-        self.leadingConstraint.isActive = false
-        self.trailingConstraint.isActive = true
-        self.message.textAlignment = .right
+        leftAligned = false
     }
 
 }

@@ -20,15 +20,26 @@ class ConversationViewController: UIViewController {
     let log = XCGLogger.default
     var subscriptionWatcher: AWSAppSyncSubscriptionWatcher<NewMessageSubscription>?
     
+    @IBAction func sendButtonAction(_ sender: Any) {
+        if let msg = self.newMessage.text,
+            let cid = self.conversationId,
+            let _ = Auth.auth().currentUser
+        {
+            
+            _ = self.manager.postMessage(conversationId: cid, message: msg)
+            self.newMessage.text = ""
+            
+        }
+    }
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var newMessage: UITextField!
-    @IBOutlet weak var inputBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var controlPaneBottomConstraint: NSLayoutConstraint!
     
     @objc func keyboardDisplayed(notification: NSNotification){
-        print(notification)
+        self.log.info("Showing keyboard")
         if let info = notification.userInfo, let rect = info[UIKeyboardFrameEndUserInfoKey] as? CGRect {
             
-            inputBottomConstraint.constant = rect.size.height + 5
+            controlPaneBottomConstraint.constant = rect.size.height - 34
         }
         
     }
@@ -50,22 +61,24 @@ class ConversationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let conversationId = self.conversationId else {
-            fatalError("Required parameter conversationId not set")
+        guard let conversationId = self.conversationId,
+            let me = Auth.auth().currentUser else {
+            fatalError("Required parameters not set")
         }
         
         newMessage.becomeFirstResponder()
         
         self.messages = []
-        
         self.manager.getConversation(conversationId: conversationId)
             .then { conversation in
                 self.messages = conversation.messages
                 self.users = conversation.users
+                
+                
                 // Show other user name in title
-                if self.users.count > 0 {
-                    self.title = self.users[0].displayName
-                    self.navigationController?.navigationBar.topItem?.title = self.users[0].displayName
+                let convoUsers = self.users.filter({ $0.userId != me.uid })
+                if convoUsers.count > 0 {
+                    self.title = convoUsers.map({ $0.displayName }).joined(separator: ", ")
                 }
                 self.table.reloadData()
                 self.scrollToBottom()
@@ -83,8 +96,10 @@ class ConversationViewController: UIViewController {
     }
     
     func receivedNewMessage(message: Message){
+        self.log.info("Got a pubsub notification")
         self.messages.append(message)
         self.table.reloadData()
+
         self.scrollToBottom()
     }
     
@@ -110,18 +125,17 @@ extension ConversationViewController: UITableViewDataSource {
         let i = indexPath.row
         //let section = indexPath.section
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as? MessageCell, let me = Auth.auth().currentUser {
-            if let u = self.users.first(where: { $0.userId == messages[i].sender }) {
-                if u.userId == me.uid {
-                    cell.makeLeftAligned()
-                }
-                else {
-                    cell.makeRightAligned()
-                }
-            }
+        if let cell = tableView.dequeueReusableCell(
+            withIdentifier: "MessageCell", for: indexPath) as? MessageCell,
+            let me = Auth.auth().currentUser {
             
             cell.message.text = messages[i].message
-            
+            if messages[i].sender.userId == me.uid {
+                cell.makeRightAligned()
+            }
+            else {
+                cell.makeLeftAligned()
+            }
             return cell
         }
 
@@ -146,23 +160,7 @@ extension ConversationViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        if let msg = self.newMessage.text,
-            let cid = self.conversationId,
-            let _ = Auth.auth().currentUser
-            {
-           
-            self.manager.postMessage(conversationId: cid, message: msg)
-//                .then{ _ in
-//                    let dateString = Formatter.iso8601.string(from: Date())
-//                    let m = UserMessage(message: msg, timestamp: dateString, sender: me.uid)
-//                    self.messages.append(m)
-//                }
-//                .then{ _ in
-//                    self.table.reloadData()
-//                    self.scrollToBottom()
-//                    self.newMessage.text = ""
-//                }
-        }
+        self.sendButtonAction(self)
         return true
     }
 }
