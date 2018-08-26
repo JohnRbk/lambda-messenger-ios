@@ -71,10 +71,12 @@ class ComposeMessageViewController: UIViewController {
         self.activityIndicator.startAnimating()
         
         manager.lookupUserByPhoneNumber(phoneNumber: parsedNum)
-            .then { user in
+            .then { user -> Promises.Promise<String> in
+                self.log.info("User \(Auth.auth().currentUser?.uid) is attempting to initiate conversation with \(user)")
                 return manager.initiateConversation(others: [user.userId])
             }
             .then { cid in
+                self.log.info("Posting message to \(cid)")
                 return manager.postMessage(conversationId: cid,
                                            message: greetingText)
                     .then{ _ in

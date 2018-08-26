@@ -41,7 +41,7 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="Dx2-74-eVS"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Say something ..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hxl-K5-exS">
@@ -50,24 +50,26 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="27Z-es-1in"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UZr-c3-hYR">
                                         <rect key="frame" x="112.5" y="220" width="150" height="50"/>
                                         <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFv-PT-7T4">
+                                                <rect key="frame" x="0.0" y="10" width="48" height="30"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancelAction:" destination="IR3-sZ-5wo" eventType="touchUpInside" id="8SK-zG-CBr"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTP-ab-nTh">
-                                                <rect key="frame" x="0.0" y="10" width="36" height="30"/>
+                                                <rect key="frame" x="114" y="10" width="36" height="30"/>
                                                 <state key="normal" title="Send"/>
                                                 <connections>
                                                     <action selector="tappedDone:" destination="IR3-sZ-5wo" eventType="touchUpInside" id="kO4-EM-0gW"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFv-PT-7T4">
-                                                <rect key="frame" x="102" y="10" width="48" height="30"/>
-                                                <state key="normal" title="Cancel"/>
-                                                <connections>
-                                                    <action selector="cancelAction:" destination="IR3-sZ-5wo" eventType="touchUpInside" id="8SK-zG-CBr"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -139,7 +141,7 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="250" id="Z8P-WS-y5t"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mQG-wf-fhx" userLabel="Display Name">
@@ -148,7 +150,7 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="250" id="U5F-1e-1GU"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" textContentType="name"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r16-tt-CvA">
@@ -326,7 +328,7 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="250" id="vB2-wp-6e6"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="go"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpZ-iw-Can">
@@ -549,7 +551,7 @@
     </scenes>
     <resources>
         <image name="message-square" width="32" height="32"/>
-        <image name="settings" width="32" height="32"/>
+        <image name="settings" width="42" height="42"/>
         <image name="sheep" width="60" height="60"/>
         <image name="thumbs-up" width="32" height="32"/>
         <image name="user-plus" width="32" height="27"/>
