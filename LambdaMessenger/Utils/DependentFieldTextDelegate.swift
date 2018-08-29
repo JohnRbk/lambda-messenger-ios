@@ -15,8 +15,7 @@ protocol FieldDependency {
 
 class DependentTextFieldDelegate: NSObject, UITextFieldDelegate {
     var isValid: Bool = false {
-        willSet {
-            print("New value is \(newValue)")
+        willSet {            
             if newValue == true && !dependencies.contains(where: { $0.isValid == false}) {
                 validStateCallback!()
             }

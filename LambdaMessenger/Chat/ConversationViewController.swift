@@ -13,6 +13,7 @@ import Firebase
 import XCGLogger
 
 class ConversationViewController: UIViewController {
+    
     var conversationId: String?
     var users: [User] = []
     var messages: [Message] = []
@@ -35,6 +36,14 @@ class ConversationViewController: UIViewController {
     @IBOutlet weak var newMessage: UITextField!
     @IBOutlet weak var controlPaneBottomConstraint: NSLayoutConstraint!
     
+    enum Events: String {
+        case restartSub = "restartSub"
+        
+        var notification: Notification.Name {
+            return Notification.Name(rawValue: self.rawValue )
+        }
+    }
+    
     @objc func keyboardDisplayed(notification: NSNotification){
         self.log.info("Showing keyboard")
         if let info = notification.userInfo, let rect = info[UIKeyboardFrameEndUserInfoKey] as? CGRect {
@@ -42,6 +51,23 @@ class ConversationViewController: UIViewController {
             controlPaneBottomConstraint.constant = rect.size.height - 34
         }
         
+    }
+    
+    func initializeEvents() {
+        
+        let nc = NotificationCenter.default
+        
+        nc.addObserver(self,
+                       selector: #selector(ConversationViewController.restartSub(_:)),
+                       name: ConversationViewController.Events.restartSub.notification,
+                       object: nil)
+    }
+    
+    // This is called in ApiManager when a subscription error is detected
+    // and we need to restart the subscription service.
+    @objc func restartSub(_ notification: Notification) {
+        self.log.info("In restartSub")
+        getMessagesAndStartSubscription()
     }
     
     func scrollToBottom(){
@@ -58,14 +84,16 @@ class ConversationViewController: UIViewController {
         self.newMessage.delegate = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    func getMessagesAndStartSubscription(){
         guard let conversationId = self.conversationId,
             let me = Auth.auth().currentUser else {
-            fatalError("Required parameters not set")
+                fatalError("Required parameters not set")
         }
         
+        self.log.info("#################################################")
+        self.log.info("userId: \(me.uid)");
+        self.log.info("conversationId: \(conversationId)");
+        self.log.info("#################################################")
         newMessage.becomeFirstResponder()
         
         self.messages = []
@@ -91,8 +119,12 @@ class ConversationViewController: UIViewController {
             }
             .then { sub in
                 self.subscriptionWatcher = sub
-            }
-        
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getMessagesAndStartSubscription()
     }
     
     func receivedNewMessage(message: Message){

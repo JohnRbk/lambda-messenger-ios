@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import XCGLogger
+import UserNotifications
 
 extension DashboardViewController {
     func initializeEvents() {
@@ -55,14 +56,22 @@ class DashboardViewController: UITableViewController {
         super.viewWillAppear(animated)
       
         self.manager.getConversationHistory().then { conversations in
-            self.log.info("Got convos: ")
-            self.log.info(conversations)
             self.conversations = conversations.filter({ c -> Bool in
                 c.messages.count > 0
             })
             self.tableView.reloadData()
         }
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let application = UIApplication.shared
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: {_, _ in })
+        application.registerForRemoteNotifications()
     }
     
     @IBAction func tappedCompose(_ sender: Any) {
@@ -112,15 +121,14 @@ extension DashboardViewController /* UITableView */ {
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let i = indexPath.row
-        //let section = indexPath.section
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath)
         
-        if let me = Auth.auth().currentUser {
-            let otherPerson = self.conversations[i].users.first { $0.userId != me.uid }
-            
+        if let me = Auth.auth().currentUser,
+            let otherPerson = self.conversations[i].users.first(where: { $0.userId != me.uid }),
+            let phoneNumber = otherPerson.phoneNumber {
             let mostRecentMessage = self.conversations[i].messages.last!
-            cell.textLabel?.text = otherPerson?.displayName
+            cell.textLabel?.text = "\(otherPerson.displayName) (\(phoneNumber))"
             cell.detailTextLabel?.text = mostRecentMessage.message
             return cell
         }

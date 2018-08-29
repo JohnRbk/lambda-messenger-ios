@@ -12,3 +12,4 @@ public enum LambdaMessengerError: Error {
     case systemError
     case userNotFoundError
 }
+

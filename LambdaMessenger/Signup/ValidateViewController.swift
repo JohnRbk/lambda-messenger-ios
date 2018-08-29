@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 import XCGLogger
 import Promises
+import Firebase
 
 extension ValidateViewController: UITextFieldDelegate {
     
@@ -63,11 +64,15 @@ class ValidateViewController: UIViewController {
     
     // https://firebase.google.com/docs/auth/ios/phone-auth?authuser=0
     @IBAction func go(_ sender: Any) {
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        appDelegate.fcmToken
         
         guard let verificationID = UserDefaults.standard.string(forKey: "authVerificationID"),
-            let code = validationCode.text else {
-                self.log.error("authVerificationID is not set")
-                return
+            let code = validationCode.text,
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+            let fcmToken = appDelegate.fcmToken
+        else {                
+                fatalError("required parameters were not set")
         }
         
         let credential = PhoneAuthProvider.provider().credential(
@@ -77,19 +82,20 @@ class ValidateViewController: UIViewController {
         self.activityIndicator.startAnimating()
         self.validateCodeButton.isEnabled = false
         self.validationCode.isEnabled = false
-        
+        var oldDisplayName: String? = nil
         AuthManager.signIn(withCredential: credential)
-            .then{ _ in
+            .then{ _ -> Promises.Promise<Firebase.User> in
+                oldDisplayName = Auth.auth().currentUser?.displayName
                 return AuthManager.updateDisplayName(self.displayName!)
             }
-            .then{ user in
+            .then{ user -> Promises.Promise<String> in
                 // Firebase requires a token to be refreshed after updating the
                 // displayName. Otherwise, the JWT token will be sent without
                 // it, causing an Authentication error
                 return AuthManager.getIDToken(forceRefresh: true, user: user)
             }
-            .then{ _ in
-                return ApiManager.default.registerUserWithPhoneNumber()
+            .then{ _ -> Promises.Promise<User> in 
+                return ApiManager.default.registerUserWithPhoneNumber(fcmToken: fcmToken)
             }
             .recover { error throws -> Promises.Promise<User> in
                 if let pn = Auth.auth().currentUser?.phoneNumber {
@@ -99,8 +105,8 @@ class ValidateViewController: UIViewController {
             }
             .then{ user -> Promises.Promise<User> in
                 if let registeredName = Auth.auth().currentUser?.displayName,
-                    let requestedName = self.displayName, registeredName != requestedName {
-                    return ApiManager.default.updateUser(displayName: requestedName)
+                    let originalName = oldDisplayName, registeredName != originalName {                    
+                    return ApiManager.default.updateUser(displayName: registeredName, fcmToken: fcmToken)
                 }
                 else {
                     return Promises.Promise<User>(user)

@@ -185,16 +185,23 @@ public final class NewMessageSubscription: GraphQLSubscription {
 
 public final class RegisterUserWithEmailMutation: GraphQLMutation {
   public static let operationString =
-    "mutation registerUserWithEmail {\n  registerUserWithEmail {\n    __typename\n    userId\n    displayName\n    email\n  }\n}"
+    "mutation registerUserWithEmail($fcmToken: String!) {\n  registerUserWithEmail(fcmToken: $fcmToken) {\n    __typename\n    userId\n    displayName\n    email\n  }\n}"
 
-  public init() {
+  public var fcmToken: String
+
+  public init(fcmToken: String) {
+    self.fcmToken = fcmToken
+  }
+
+  public var variables: GraphQLMap? {
+    return ["fcmToken": fcmToken]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Mutation"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("registerUserWithEmail", type: .nonNull(.object(RegisterUserWithEmail.selections))),
+      GraphQLField("registerUserWithEmail", arguments: ["fcmToken": GraphQLVariable("fcmToken")], type: .nonNull(.object(RegisterUserWithEmail.selections))),
     ]
 
     public var snapshot: Snapshot
@@ -277,16 +284,23 @@ public final class RegisterUserWithEmailMutation: GraphQLMutation {
 
 public final class RegisterUserWithPhoneNumberMutation: GraphQLMutation {
   public static let operationString =
-    "mutation registerUserWithPhoneNumber {\n  registerUserWithPhoneNumber {\n    __typename\n    userId\n    displayName\n    phoneNumber\n  }\n}"
+    "mutation registerUserWithPhoneNumber($fcmToken: String!) {\n  registerUserWithPhoneNumber(fcmToken: $fcmToken) {\n    __typename\n    userId\n    displayName\n    phoneNumber\n  }\n}"
 
-  public init() {
+  public var fcmToken: String
+
+  public init(fcmToken: String) {
+    self.fcmToken = fcmToken
+  }
+
+  public var variables: GraphQLMap? {
+    return ["fcmToken": fcmToken]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Mutation"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("registerUserWithPhoneNumber", type: .nonNull(.object(RegisterUserWithPhoneNumber.selections))),
+      GraphQLField("registerUserWithPhoneNumber", arguments: ["fcmToken": GraphQLVariable("fcmToken")], type: .nonNull(.object(RegisterUserWithPhoneNumber.selections))),
     ]
 
     public var snapshot: Snapshot
@@ -552,23 +566,25 @@ public final class PostMessageMutation: GraphQLMutation {
 
 public final class UpdateUserMutation: GraphQLMutation {
   public static let operationString =
-    "mutation updateUser($displayName: String!) {\n  updateUser(displayName: $displayName) {\n    __typename\n    userId\n    displayName\n    phoneNumber\n    email\n  }\n}"
+    "mutation updateUser($displayName: String, $fcmToken: String) {\n  updateUser(displayName: $displayName, fcmToken: $fcmToken) {\n    __typename\n    userId\n    displayName\n    phoneNumber\n    email\n  }\n}"
 
-  public var displayName: String
+  public var displayName: String?
+  public var fcmToken: String?
 
-  public init(displayName: String) {
+  public init(displayName: String? = nil, fcmToken: String? = nil) {
     self.displayName = displayName
+    self.fcmToken = fcmToken
   }
 
   public var variables: GraphQLMap? {
-    return ["displayName": displayName]
+    return ["displayName": displayName, "fcmToken": fcmToken]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Mutation"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("updateUser", arguments: ["displayName": GraphQLVariable("displayName")], type: .nonNull(.object(UpdateUser.selections))),
+      GraphQLField("updateUser", arguments: ["displayName": GraphQLVariable("displayName"), "fcmToken": GraphQLVariable("fcmToken")], type: .nonNull(.object(UpdateUser.selections))),
     ]
 
     public var snapshot: Snapshot

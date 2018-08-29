@@ -20,23 +20,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="DId-OI-bq5">
-                                <rect key="frame" x="0.0" y="50" width="375" height="325"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="445"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user-plus" translatesAutoresizingMaskIntoConstraints="NO" id="t9k-I3-pz8">
-                                        <rect key="frame" x="162.5" y="0.0" width="50" height="50"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lamb-plus" translatesAutoresizingMaskIntoConstraints="NO" id="t9k-I3-pz8">
+                                        <rect key="frame" x="148.5" y="0.0" width="78" height="70"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="3FJ-km-5KO"/>
-                                            <constraint firstAttribute="height" constant="50" id="sXJ-EK-omk"/>
+                                            <constraint firstAttribute="height" constant="70" id="aan-sX-lVO"/>
+                                            <constraint firstAttribute="width" constant="78" id="zPb-LH-zQk"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start a conversation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYj-gR-fd4">
-                                        <rect key="frame" x="111" y="55" width="153.5" height="50"/>
+                                        <rect key="frame" x="111" y="75" width="153.5" height="70"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g0S-De-d9b" userLabel="phoneNumberField">
-                                        <rect key="frame" x="62.5" y="110" width="250" height="50"/>
+                                        <rect key="frame" x="62.5" y="150" width="250" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="Dx2-74-eVS"/>
                                         </constraints>
@@ -45,7 +45,7 @@
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Say something ..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hxl-K5-exS">
-                                        <rect key="frame" x="62.5" y="165" width="250" height="50"/>
+                                        <rect key="frame" x="62.5" y="225" width="250" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="27Z-es-1in"/>
                                         </constraints>
@@ -54,10 +54,10 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UZr-c3-hYR">
-                                        <rect key="frame" x="112.5" y="220" width="150" height="50"/>
+                                        <rect key="frame" x="112.5" y="300" width="150" height="70"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFv-PT-7T4">
-                                                <rect key="frame" x="0.0" y="10" width="48" height="30"/>
+                                                <rect key="frame" x="0.0" y="20" width="48" height="30"/>
                                                 <state key="normal" title="Cancel">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -66,7 +66,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTP-ab-nTh">
-                                                <rect key="frame" x="114" y="10" width="36" height="30"/>
+                                                <rect key="frame" x="114" y="20" width="36" height="30"/>
                                                 <state key="normal" title="Send"/>
                                                 <connections>
                                                     <action selector="tappedDone:" destination="IR3-sZ-5wo" eventType="touchUpInside" id="kO4-EM-0gW"/>
@@ -78,7 +78,7 @@
                                         </constraints>
                                     </stackView>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="syl-I2-aV3">
-                                        <rect key="frame" x="177.5" y="275" width="20" height="50"/>
+                                        <rect key="frame" x="177.5" y="375" width="20" height="70"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <constraints>
@@ -115,28 +115,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3vJ-XS-Rg6">
-                                <rect key="frame" x="0.0" y="50" width="375" height="380"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="450"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sheep" translatesAutoresizingMaskIntoConstraints="NO" id="g25-RU-Yku">
-                                        <rect key="frame" x="157.5" y="0.0" width="60" height="50"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lamb" translatesAutoresizingMaskIntoConstraints="NO" id="g25-RU-Yku">
+                                        <rect key="frame" x="156.5" y="0.0" width="62" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="3ad-oZ-git"/>
+                                            <constraint firstAttribute="height" constant="60" id="3ad-oZ-git"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Lambda Messenger" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smt-oq-YZw">
-                                        <rect key="frame" x="14" y="55" width="347" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Lambda Messenger" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smt-oq-YZw">
+                                        <rect key="frame" x="57.5" y="65" width="260.5" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register using your phone number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzM-1t-llg">
-                                        <rect key="frame" x="56" y="110" width="263" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up using your phone number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzM-1t-llg">
+                                        <rect key="frame" x="51.5" y="130" width="272.5" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rAJ-4Y-e5I">
-                                        <rect key="frame" x="62.5" y="165" width="250" height="50"/>
+                                        <rect key="frame" x="62.5" y="195" width="250" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="250" id="Z8P-WS-y5t"/>
                                         </constraints>
@@ -145,7 +145,7 @@
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mQG-wf-fhx" userLabel="Display Name">
-                                        <rect key="frame" x="62.5" y="220" width="250" height="50"/>
+                                        <rect key="frame" x="62.5" y="260" width="250" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="250" id="U5F-1e-1GU"/>
                                         </constraints>
@@ -154,7 +154,7 @@
                                         <textInputTraits key="textInputTraits" textContentType="name"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r16-tt-CvA">
-                                        <rect key="frame" x="151" y="275" width="73" height="50"/>
+                                        <rect key="frame" x="151" y="325" width="73" height="60"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Continue"/>
                                         <connections>
@@ -162,7 +162,7 @@
                                         </connections>
                                     </button>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="D2d-6W-I7B">
-                                        <rect key="frame" x="177.5" y="330" width="20" height="50"/>
+                                        <rect key="frame" x="177.5" y="390" width="20" height="60"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <constraints>
@@ -550,11 +550,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="lamb" width="62" height="68"/>
+        <image name="lamb-plus" width="78" height="68"/>
         <image name="message-square" width="32" height="32"/>
         <image name="settings" width="42" height="42"/>
-        <image name="sheep" width="60" height="60"/>
         <image name="thumbs-up" width="32" height="32"/>
-        <image name="user-plus" width="32" height="27"/>
     </resources>
     <color key="tintColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

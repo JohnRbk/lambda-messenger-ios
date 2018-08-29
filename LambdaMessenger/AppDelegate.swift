@@ -8,15 +8,22 @@
 
 import UIKit
 import Firebase
+import UserNotifications
+import XCGLogger
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    let log = XCGLogger.default
     var window: UIWindow?
+    var fcmToken: String?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
+        
+        Messaging.messaging().delegate = self
+        
         
         // This is the main way to set progress view color
         UIPageControl.appearance().pageIndicatorTintColor = .lightGray
@@ -40,6 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = initialViewController
         }
         
+        UNUserNotificationCenter.current().delegate = self
             
         self.window?.makeKeyAndVisible()
         
@@ -70,4 +78,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
 

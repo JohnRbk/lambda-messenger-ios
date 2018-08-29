@@ -13,6 +13,7 @@ import Firebase
 // must be namespaced
 //import AWSAppSync
 import XCGLogger
+import UIKit
 import AWSCore
 
 extension Formatter {
@@ -27,19 +28,13 @@ public class OpenIdAuthProvider: AWSOIDCAuthProvider {
     let log = XCGLogger.default
     public func getLatestAuthToken(_ callback: @escaping (String) -> Void) {
         
-//        Auth.auth().currentUser?.getIDTokenResult(completion: { (result, error) in
-//            self.log.info(result?.expirationDate)
-//            self.log.info(result?.claims)
-//        })
-        
         if let u = Auth.auth().currentUser {
             AuthManager.getIDToken(user: u).then { t in
-//                self.log.info("<<<<<<<<<<<<<<<<<<< TOKEN >>>>>>>>>>>>>>>>>>>>>")
-//                self.log.info(t)
-//                self.log.info("<<<<<<<<<<<<<<<<<<< TOKEN >>>>>>>>>>>>>>>>>>>>>")
                 callback(t)
             }
         } else {
+            // Probably want to diplay a message to the user asking them
+            // to sign out and log back in
             log.error("Unable to get auth token")
             callback("")
         }
@@ -80,8 +75,16 @@ public class ApiManager {
                                     transaction: ApolloStore.ReadTransaction?, error: Error?) {
 
                 switch (error, result) {
-                case let (.some(error), nil):
+                case let (.some(error), nil):                    
                     self.log.error(error)
+                    if let e = error as? AWSAppSyncSubscriptionError,
+                        e.recoverySuggestion == "Restart subscription request." {
+                        
+                        let n = ConversationViewController.Events.restartSub.notification
+                        NotificationCenter.default.post(name: n, object: conversationId)
+                        
+                        
+                    }
                 case let (nil, .some(result)) where result.errors != nil:
                     self.log.error(result.errors![0])
                 case let (nil, .some(result)) where result.data?.newMessage?.fragments.messageFields != nil:
@@ -173,9 +176,9 @@ public class ApiManager {
         
     }
 
-    public func updateUser(displayName: String) -> Promises.Promise<User> {
+    public func updateUser(displayName: String, fcmToken: String) -> Promises.Promise<User> {
         
-        let register = UpdateUserMutation(displayName: displayName)
+        let register = UpdateUserMutation(displayName: displayName, fcmToken: fcmToken)
         
         let promise = Promises.Promise<User> { fulfill, reject in
             
@@ -202,9 +205,9 @@ public class ApiManager {
         
     }
     
-    public func registerUserWithPhoneNumber() -> Promises.Promise<User> {
+    public func registerUserWithPhoneNumber(fcmToken: String) -> Promises.Promise<User> {
         
-        let register = RegisterUserWithPhoneNumberMutation()
+        let register = RegisterUserWithPhoneNumberMutation(fcmToken: fcmToken)
         
         let promise = Promises.Promise<User> { fulfill, reject in
             
@@ -231,9 +234,9 @@ public class ApiManager {
         
     }
     
-    public func registerUserWithEmail() -> Promises.Promise<User> {
+    public func registerUserWithEmail(fcmToken: String) -> Promises.Promise<User> {
 
-        let register = RegisterUserWithEmailMutation()
+        let register = RegisterUserWithEmailMutation(fcmToken: fcmToken)
 
         let promise = Promises.Promise<User> { fulfill, reject in
 

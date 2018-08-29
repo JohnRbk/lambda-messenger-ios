@@ -12,6 +12,7 @@
 		7402C2B7211A850E00C3D536 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7402C2B6211A850E00C3D536 /* Assets.xcassets */; };
 		7402C2BA211A850E00C3D536 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7402C2B8211A850E00C3D536 /* LaunchScreen.storyboard */; };
 		7402C2C5211A850E00C3D536 /* LambdaMessengerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402C2C4211A850E00C3D536 /* LambdaMessengerTests.swift */; };
+		74187FD72136DC1600523CA8 /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74187FD62136DC1600523CA8 /* AppDelegate+Notifications.swift */; };
 		7449B1C6211B6B27009F2EB8 /* ObjcExceptionBridging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1BD211B6B27009F2EB8 /* ObjcExceptionBridging.framework */; };
 		7449B1C7211B6B27009F2EB8 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1BE211B6B27009F2EB8 /* FirebaseAnalytics.framework */; };
 		7449B1C8211B6B27009F2EB8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1BF211B6B27009F2EB8 /* Alamofire.framework */; };
@@ -34,7 +35,6 @@
 		7449B1F4211B6E51009F2EB8 /* ValidateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449B1EC211B6E51009F2EB8 /* ValidateViewController.swift */; };
 		7449B1F6211B6E51009F2EB8 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449B1EE211B6E51009F2EB8 /* RegisterViewController.swift */; };
 		7449B1F9211B6F96009F2EB8 /* PhoneNumberUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449B1F8211B6F96009F2EB8 /* PhoneNumberUtil.swift */; };
-		74594A2C21287818009208DC /* PhoneNumberUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449B1F8211B6F96009F2EB8 /* PhoneNumberUtil.swift */; };
 		74594A2E212879D5009208DC /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74594A2D212879D5009208DC /* TestUtils.swift */; };
 		746AB91B211C6307006D73BD /* libPhoneNumberiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 746AB918211C5F6C006D73BD /* libPhoneNumberiOS.framework */; };
 		746AB91C211C6307006D73BD /* libPhoneNumberiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 746AB918211C5F6C006D73BD /* libPhoneNumberiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -164,17 +164,17 @@
 		7482999E212F7F3E00CFA57D /* AWSNetworkTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7482992D212F7F3E00CFA57D /* AWSNetworkTransport.swift */; };
 		7482999F212F7F3E00CFA57D /* AWSSQLLiteNormalizedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7482992E212F7F3E00CFA57D /* AWSSQLLiteNormalizedCache.swift */; };
 		748299A0212F7F3E00CFA57D /* AWSSQLLiteNormalizedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7482992E212F7F3E00CFA57D /* AWSSQLLiteNormalizedCache.swift */; };
+		74AA45002132DD59009C122B /* FirebaseMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74AA44FF2132DD59009C122B /* FirebaseMessaging.framework */; };
+		74AA45022132DD61009C122B /* FirebaseCrash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74AA45012132DD61009C122B /* FirebaseCrash.framework */; };
+		74AA45042132DFA5009C122B /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74AA45032132DFA5009C122B /* GoogleUtilities.framework */; };
+		74AA45082132E01F009C122B /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74AA45072132E01F009C122B /* GoogleAppMeasurement.framework */; };
 		74DB8B2A212DD433003EDCEC /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DB8B29212DD433003EDCEC /* AuthManager.swift */; };
 		74DB8B2C212DD4B9003EDCEC /* LambdaMessengerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DB8B2B212DD4B9003EDCEC /* LambdaMessengerError.swift */; };
 		74DB8B2E212DD4D5003EDCEC /* AppSyncBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DB8B2D212DD4D5003EDCEC /* AppSyncBridge.swift */; };
-		74DB8B2F212DD672003EDCEC /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DB8B29212DD433003EDCEC /* AuthManager.swift */; };
-		74DB8B30212DD674003EDCEC /* LambdaMessengerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DB8B2B212DD4B9003EDCEC /* LambdaMessengerError.swift */; };
-		74DB8B31212DD676003EDCEC /* AppSyncBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DB8B2D212DD4D5003EDCEC /* AppSyncBridge.swift */; };
 		74E7FE89211DC30E004E8092 /* Promises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E7FE88211DC30E004E8092 /* Promises.framework */; };
 		74E7FE8C211DC777004E8092 /* Promises.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 74E7FE88211DC30E004E8092 /* Promises.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		74E7FE92211DC7ED004E8092 /* Promises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E7FE88211DC30E004E8092 /* Promises.framework */; };
 		74E7FE94211DCA84004E8092 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E7FE93211DCA84004E8092 /* ApiManager.swift */; };
-		74E7FE95211DCA84004E8092 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E7FE93211DCA84004E8092 /* ApiManager.swift */; };
 		74E7FE98211DCE84004E8092 /* FBLPromises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E7FE96211DCE84004E8092 /* FBLPromises.framework */; };
 /* End PBXBuildFile section */
 
@@ -220,6 +220,7 @@
 		7402C2C0211A850E00C3D536 /* LambdaMessengerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LambdaMessengerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7402C2C4211A850E00C3D536 /* LambdaMessengerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LambdaMessengerTests.swift; sourceTree = "<group>"; };
 		7402C2C6211A850E00C3D536 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74187FD62136DC1600523CA8 /* AppDelegate+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notifications.swift"; sourceTree = "<group>"; };
 		7449B1BC211B6B27009F2EB8 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Carthage/Build/iOS/Firebase.framework; sourceTree = SOURCE_ROOT; };
 		7449B1BD211B6B27009F2EB8 /* ObjcExceptionBridging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjcExceptionBridging.framework; path = Carthage/Build/iOS/ObjcExceptionBridging.framework; sourceTree = SOURCE_ROOT; };
 		7449B1BE211B6B27009F2EB8 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Carthage/Build/iOS/FirebaseAnalytics.framework; sourceTree = SOURCE_ROOT; };
@@ -324,6 +325,10 @@
 		7482992C212F7F3E00CFA57D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7482992D212F7F3E00CFA57D /* AWSNetworkTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSNetworkTransport.swift; sourceTree = "<group>"; };
 		7482992E212F7F3E00CFA57D /* AWSSQLLiteNormalizedCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSSQLLiteNormalizedCache.swift; sourceTree = "<group>"; };
+		74AA44FF2132DD59009C122B /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseMessaging.framework; path = Carthage/Build/iOS/FirebaseMessaging.framework; sourceTree = SOURCE_ROOT; };
+		74AA45012132DD61009C122B /* FirebaseCrash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCrash.framework; path = Carthage/Build/iOS/FirebaseCrash.framework; sourceTree = SOURCE_ROOT; };
+		74AA45032132DFA5009C122B /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Carthage/Build/iOS/GoogleUtilities.framework; sourceTree = SOURCE_ROOT; };
+		74AA45072132E01F009C122B /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Carthage/Build/iOS/GoogleAppMeasurement.framework; sourceTree = SOURCE_ROOT; };
 		74DB8B29212DD433003EDCEC /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		74DB8B2B212DD4B9003EDCEC /* LambdaMessengerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LambdaMessengerError.swift; sourceTree = "<group>"; };
 		74DB8B2D212DD4D5003EDCEC /* AppSyncBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncBridge.swift; sourceTree = "<group>"; };
@@ -339,19 +344,23 @@
 			files = (
 				74E7FE89211DC30E004E8092 /* Promises.framework in Frameworks */,
 				746AB936211D6E18006D73BD /* AWSCore.framework in Frameworks */,
+				74AA45082132E01F009C122B /* GoogleAppMeasurement.framework in Frameworks */,
 				7449B1E0211B6CEB009F2EB8 /* GoogleToolboxForMac.framework in Frameworks */,
 				7449B1DA211B6C9F009F2EB8 /* nanopb.framework in Frameworks */,
 				7449B1C7211B6B27009F2EB8 /* FirebaseAnalytics.framework in Frameworks */,
 				7449B1DC211B6CCC009F2EB8 /* FirebaseNanoPB.framework in Frameworks */,
+				74AA45042132DFA5009C122B /* GoogleUtilities.framework in Frameworks */,
 				7449B1DF211B6CEB009F2EB8 /* GTMSessionFetcher.framework in Frameworks */,
 				746AB9FC211D768A006D73BD /* SQLite.framework in Frameworks */,
 				7449B1E4211B6D51009F2EB8 /* FirebaseInstanceID.framework in Frameworks */,
+				74AA45022132DD61009C122B /* FirebaseCrash.framework in Frameworks */,
 				7449B1C9211B6B27009F2EB8 /* FirebaseAuth.framework in Frameworks */,
 				7449B1CD211B6BA8009F2EB8 /* XCGLogger.framework in Frameworks */,
 				746ABA02211D76AD006D73BD /* Reachability.framework in Frameworks */,
 				7449B1E2211B6D3B009F2EB8 /* Protobuf.framework in Frameworks */,
 				7449B1CA211B6B27009F2EB8 /* FirebaseCore.framework in Frameworks */,
 				7449B1C8211B6B27009F2EB8 /* Alamofire.framework in Frameworks */,
+				74AA45002132DD59009C122B /* FirebaseMessaging.framework in Frameworks */,
 				747D3E3B212F890C0089703E /* FBLPromises.framework in Frameworks */,
 				746AB91B211C6307006D73BD /* libPhoneNumberiOS.framework in Frameworks */,
 				7449B1C6211B6B27009F2EB8 /* ObjcExceptionBridging.framework in Frameworks */,
@@ -403,6 +412,7 @@
 				7449B1EA211B6E51009F2EB8 /* Signup */,
 				7402C2F8211AAD2000C3D536 /* Frameworks */,
 				7402C2AF211A850B00C3D536 /* AppDelegate.swift */,
+				74187FD62136DC1600523CA8 /* AppDelegate+Notifications.swift */,
 				7402C2B3211A850B00C3D536 /* Main.storyboard */,
 				7402C2B6211A850E00C3D536 /* Assets.xcassets */,
 				7402C2B8211A850E00C3D536 /* LaunchScreen.storyboard */,
@@ -428,6 +438,10 @@
 		7402C2F8211AAD2000C3D536 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				74AA45072132E01F009C122B /* GoogleAppMeasurement.framework */,
+				74AA45032132DFA5009C122B /* GoogleUtilities.framework */,
+				74AA45012132DD61009C122B /* FirebaseCrash.framework */,
+				74AA44FF2132DD59009C122B /* FirebaseMessaging.framework */,
 				74E7FE96211DCE84004E8092 /* FBLPromises.framework */,
 				74E7FE88211DC30E004E8092 /* Promises.framework */,
 				746AB9FB211D7689006D73BD /* Reachability.framework */,
@@ -736,7 +750,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SQLite.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AWSCore.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/libPhoneNumberiOS.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ObjcExceptionBridging.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/XCGLogger.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FBLPromises.framework",
@@ -748,7 +761,6 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SQLite.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AWSCore.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/libPhoneNumberiOS.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ObjcExceptionBridging.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/XCGLogger.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FBLPromises.framework",
@@ -822,6 +834,7 @@
 				74829945212F7F3E00CFA57D /* GraphQLResultAccumulator.swift in Sources */,
 				74829935212F7F3E00CFA57D /* AppSyncMQTTClient.swift in Sources */,
 				7482994F212F7F3E00CFA57D /* GraphQLError.swift in Sources */,
+				74187FD72136DC1600523CA8 /* AppDelegate+Notifications.swift in Sources */,
 				74829999212F7F3E00CFA57D /* AWSAppSyncClientS3ObjectsExtensions.swift in Sources */,
 				74829991212F7F3E00CFA57D /* AWSMQttTxFlow.m in Sources */,
 				7482994B212F7F3E00CFA57D /* Collections.swift in Sources */,
@@ -849,16 +862,13 @@
 				74829954212F7F3E00CFA57D /* NormalizedCache.swift in Sources */,
 				7482993A212F7F3E00CFA57D /* AWSAppSyncClient.swift in Sources */,
 				747D3E40213175E30089703E /* AWSIoTMQTTClient.m in Sources */,
-				74E7FE95211DCA84004E8092 /* ApiManager.swift in Sources */,
 				748299A0212F7F3E00CFA57D /* AWSSQLLiteNormalizedCache.swift in Sources */,
 				7482993E212F7F3E00CFA57D /* GraphQLResponse.swift in Sources */,
 				7482996E212F7F3E00CFA57D /* InMemoryNormalizedCache.swift in Sources */,
 				74829972212F7F3E00CFA57D /* GraphQLResultNormalizer.swift in Sources */,
 				7482994C212F7F3E00CFA57D /* Collections.swift in Sources */,
 				74829980212F7F3E00CFA57D /* GraphQLResult.swift in Sources */,
-				74DB8B30212DD674003EDCEC /* LambdaMessengerError.swift in Sources */,
 				74829938212F7F3E00CFA57D /* AWSOfflineMutationStore.swift in Sources */,
-				74DB8B2F212DD672003EDCEC /* AuthManager.swift in Sources */,
 				74829984212F7F3E00CFA57D /* AWSIoTCSR.m in Sources */,
 				74594A2E212879D5009208DC /* TestUtils.swift in Sources */,
 				74829962212F7F3E00CFA57D /* GraphQLSelectionSetMapper.swift in Sources */,
@@ -867,7 +877,6 @@
 				74829994212F7F3E00CFA57D /* AWSMQTTDecoder.m in Sources */,
 				7482998E212F7F3E00CFA57D /* AWSMQTTSession.m in Sources */,
 				7482998C212F7F3E00CFA57D /* AWSIoTWebSocketOutputStream.m in Sources */,
-				74594A2C21287818009208DC /* PhoneNumberUtil.swift in Sources */,
 				7482999A212F7F3E00CFA57D /* AWSAppSyncClientS3ObjectsExtensions.swift in Sources */,
 				747D3E3F2131754D0089703E /* AWSAppSyncSubscriptionWatcher.swift in Sources */,
 				74829936212F7F3E00CFA57D /* AppSyncMQTTClient.swift in Sources */,
@@ -896,7 +905,6 @@
 				74829934212F7F3E00CFA57D /* AWSS3ObjectProtocol.swift in Sources */,
 				74829976212F7F3E00CFA57D /* ApolloClient.swift in Sources */,
 				7482997C212F7F3E00CFA57D /* NetworkTransport.swift in Sources */,
-				74DB8B31212DD676003EDCEC /* AppSyncBridge.swift in Sources */,
 				7482994E212F7F3E00CFA57D /* GraphQLQueryWatcher.swift in Sources */,
 				74829960212F7F3E00CFA57D /* ApolloStore.swift in Sources */,
 				74829964212F7F3E00CFA57D /* GraphQLInputValue.swift in Sources */,
@@ -1072,6 +1080,7 @@
 					"\"$(SRCROOT)/Carthage/Build/iOS/AWSCore.framework/Headers/\"",
 				);
 				INFOPLIST_FILE = LambdaMessenger/Info.plist;
+				INSTALL_GROUP = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1105,6 +1114,7 @@
 					"\"$(SRCROOT)/Carthage/Build/iOS/AWSCore.framework/Headers/\"",
 				);
 				INFOPLIST_FILE = LambdaMessenger/Info.plist;
+				INSTALL_GROUP = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
