@@ -13,6 +13,23 @@
 		7402C2BA211A850E00C3D536 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7402C2B8211A850E00C3D536 /* LaunchScreen.storyboard */; };
 		7402C2C5211A850E00C3D536 /* LambdaMessengerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402C2C4211A850E00C3D536 /* LambdaMessengerTests.swift */; };
 		74187FD72136DC1600523CA8 /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74187FD62136DC1600523CA8 /* AppDelegate+Notifications.swift */; };
+		74187FD82136EDB800523CA8 /* PhoneNumberUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449B1F8211B6F96009F2EB8 /* PhoneNumberUtil.swift */; };
+		74187FD92136EDB800523CA8 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E7FE93211DCA84004E8092 /* ApiManager.swift */; };
+		74187FDA2136EDB800523CA8 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DB8B29212DD433003EDCEC /* AuthManager.swift */; };
+		74187FDB2136EDB800523CA8 /* LambdaMessengerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DB8B2B212DD4B9003EDCEC /* LambdaMessengerError.swift */; };
+		74187FDC2136EDB800523CA8 /* AppSyncBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DB8B2D212DD4D5003EDCEC /* AppSyncBridge.swift */; };
+		74187FDD2136EDB800523CA8 /* DependentFieldTextDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747D3E442131D4A90089703E /* DependentFieldTextDelegate.swift */; };
+		74187FDE2136EDBB00523CA8 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449B1E6211B6E51009F2EB8 /* ConversationViewController.swift */; };
+		74187FDF2136EDBB00523CA8 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449B1E7211B6E51009F2EB8 /* DashboardViewController.swift */; };
+		74187FE02136EDBB00523CA8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449B1E9211B6E51009F2EB8 /* SettingsViewController.swift */; };
+		74187FE12136EDBB00523CA8 /* ComposeMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746AB91D211C71D2006D73BD /* ComposeMessageViewController.swift */; };
+		74187FE22136EDBB00523CA8 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747D3E3D21303C730089703E /* MessageCell.swift */; };
+		74187FE32136EDBE00523CA8 /* ReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449B1EB211B6E51009F2EB8 /* ReadyViewController.swift */; };
+		74187FE42136EDBE00523CA8 /* ValidateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449B1EC211B6E51009F2EB8 /* ValidateViewController.swift */; };
+		74187FE52136EDBE00523CA8 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449B1EE211B6E51009F2EB8 /* RegisterViewController.swift */; };
+		74187FE62136EDC100523CA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402C2AF211A850B00C3D536 /* AppDelegate.swift */; };
+		74187FE72136EDC100523CA8 /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74187FD62136DC1600523CA8 /* AppDelegate+Notifications.swift */; };
+		74187FE82136EDC400523CA8 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746AB91F211D4589006D73BD /* API.swift */; };
 		7449B1C6211B6B27009F2EB8 /* ObjcExceptionBridging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1BD211B6B27009F2EB8 /* ObjcExceptionBridging.framework */; };
 		7449B1C7211B6B27009F2EB8 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1BE211B6B27009F2EB8 /* FirebaseAnalytics.framework */; };
 		7449B1C8211B6B27009F2EB8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1BF211B6B27009F2EB8 /* Alamofire.framework */; };
@@ -40,7 +57,6 @@
 		746AB91C211C6307006D73BD /* libPhoneNumberiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 746AB918211C5F6C006D73BD /* libPhoneNumberiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		746AB91E211C71D2006D73BD /* ComposeMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746AB91D211C71D2006D73BD /* ComposeMessageViewController.swift */; };
 		746AB920211D4589006D73BD /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746AB91F211D4589006D73BD /* API.swift */; };
-		746AB921211D458E006D73BD /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746AB91F211D4589006D73BD /* API.swift */; };
 		746AB92C211D5BDA006D73BD /* AppsyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746AB92B211D5BDA006D73BD /* AppsyncTests.swift */; };
 		746AB935211D6E16006D73BD /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 746AB933211D6E15006D73BD /* AWSCore.framework */; };
 		746AB936211D6E18006D73BD /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 746AB933211D6E15006D73BD /* AWSCore.framework */; };
@@ -855,34 +871,45 @@
 			buildActionMask = 2147483647;
 			files = (
 				74829952212F7F3E00CFA57D /* Result.swift in Sources */,
+				74187FE52136EDBE00523CA8 /* RegisterViewController.swift in Sources */,
 				74829982212F7F3E00CFA57D /* AWSAppSyncClientConflictResolutionExtensions.swift in Sources */,
 				74829966212F7F3E00CFA57D /* HTTPNetworkTransport.swift in Sources */,
 				74829970212F7F3E00CFA57D /* DataLoader.swift in Sources */,
 				74829990212F7F3E00CFA57D /* AWSMQTTEncoder.m in Sources */,
 				74829954212F7F3E00CFA57D /* NormalizedCache.swift in Sources */,
 				7482993A212F7F3E00CFA57D /* AWSAppSyncClient.swift in Sources */,
+				74187FE82136EDC400523CA8 /* API.swift in Sources */,
+				74187FDF2136EDBB00523CA8 /* DashboardViewController.swift in Sources */,
 				747D3E40213175E30089703E /* AWSIoTMQTTClient.m in Sources */,
 				748299A0212F7F3E00CFA57D /* AWSSQLLiteNormalizedCache.swift in Sources */,
 				7482993E212F7F3E00CFA57D /* GraphQLResponse.swift in Sources */,
 				7482996E212F7F3E00CFA57D /* InMemoryNormalizedCache.swift in Sources */,
 				74829972212F7F3E00CFA57D /* GraphQLResultNormalizer.swift in Sources */,
+				74187FE22136EDBB00523CA8 /* MessageCell.swift in Sources */,
+				74187FDD2136EDB800523CA8 /* DependentFieldTextDelegate.swift in Sources */,
 				7482994C212F7F3E00CFA57D /* Collections.swift in Sources */,
+				74187FE12136EDBB00523CA8 /* ComposeMessageViewController.swift in Sources */,
 				74829980212F7F3E00CFA57D /* GraphQLResult.swift in Sources */,
 				74829938212F7F3E00CFA57D /* AWSOfflineMutationStore.swift in Sources */,
 				74829984212F7F3E00CFA57D /* AWSIoTCSR.m in Sources */,
 				74594A2E212879D5009208DC /* TestUtils.swift in Sources */,
+				74187FDB2136EDB800523CA8 /* LambdaMessengerError.swift in Sources */,
 				74829962212F7F3E00CFA57D /* GraphQLSelectionSetMapper.swift in Sources */,
 				74829944212F7F3E00CFA57D /* GraphQLDependencyTracker.swift in Sources */,
 				7482999E212F7F3E00CFA57D /* AWSNetworkTransport.swift in Sources */,
+				74187FDC2136EDB800523CA8 /* AppSyncBridge.swift in Sources */,
+				74187FD92136EDB800523CA8 /* ApiManager.swift in Sources */,
 				74829994212F7F3E00CFA57D /* AWSMQTTDecoder.m in Sources */,
 				7482998E212F7F3E00CFA57D /* AWSMQTTSession.m in Sources */,
 				7482998C212F7F3E00CFA57D /* AWSIoTWebSocketOutputStream.m in Sources */,
 				7482999A212F7F3E00CFA57D /* AWSAppSyncClientS3ObjectsExtensions.swift in Sources */,
 				747D3E3F2131754D0089703E /* AWSAppSyncSubscriptionWatcher.swift in Sources */,
+				74187FD82136EDB800523CA8 /* PhoneNumberUtil.swift in Sources */,
 				74829936212F7F3E00CFA57D /* AppSyncMQTTClient.swift in Sources */,
 				74829948212F7F3E00CFA57D /* JSONStandardTypeConversions.swift in Sources */,
 				74829998212F7F3E00CFA57D /* AWSIoTKeychain.m in Sources */,
 				74829992212F7F3E00CFA57D /* AWSMQttTxFlow.m in Sources */,
+				74187FE02136EDBB00523CA8 /* SettingsViewController.swift in Sources */,
 				7482995E212F7F3E00CFA57D /* JSONSerializationFormat.swift in Sources */,
 				7482995C212F7F3E00CFA57D /* GraphQLExecutor.swift in Sources */,
 				74829932212F7F3E00CFA57D /* AWSAppSyncAuthProvider.swift in Sources */,
@@ -891,9 +918,11 @@
 				7482998A212F7F3E00CFA57D /* AWSSRWebSocket.m in Sources */,
 				7482996C212F7F3E00CFA57D /* AWSGraphQLSubscriptionResponse.swift in Sources */,
 				7482995A212F7F3E00CFA57D /* AsynchronousOperation.swift in Sources */,
-				746AB921211D458E006D73BD /* API.swift in Sources */,
+				74187FDE2136EDBB00523CA8 /* ConversationViewController.swift in Sources */,
+				74187FE62136EDC100523CA8 /* AppDelegate.swift in Sources */,
 				746AB92C211D5BDA006D73BD /* AppsyncTests.swift in Sources */,
 				74829996212F7F3E00CFA57D /* AWSMQTTMessage.m in Sources */,
+				74187FE32136EDBE00523CA8 /* ReadyViewController.swift in Sources */,
 				7482994A212F7F3E00CFA57D /* GraphQLResponseGenerator.swift in Sources */,
 				74829942212F7F3E00CFA57D /* Utilities.swift in Sources */,
 				74829958212F7F3E00CFA57D /* JSON.swift in Sources */,
@@ -902,15 +931,18 @@
 				74829950212F7F3E00CFA57D /* GraphQLError.swift in Sources */,
 				74829956212F7F3E00CFA57D /* GraphQLSelectionSet.swift in Sources */,
 				7402C2C5211A850E00C3D536 /* LambdaMessengerTests.swift in Sources */,
+				74187FDA2136EDB800523CA8 /* AuthManager.swift in Sources */,
 				74829934212F7F3E00CFA57D /* AWSS3ObjectProtocol.swift in Sources */,
 				74829976212F7F3E00CFA57D /* ApolloClient.swift in Sources */,
 				7482997C212F7F3E00CFA57D /* NetworkTransport.swift in Sources */,
 				7482994E212F7F3E00CFA57D /* GraphQLQueryWatcher.swift in Sources */,
 				74829960212F7F3E00CFA57D /* ApolloStore.swift in Sources */,
+				74187FE72136EDC100523CA8 /* AppDelegate+Notifications.swift in Sources */,
 				74829964212F7F3E00CFA57D /* GraphQLInputValue.swift in Sources */,
 				7482993C212F7F3E00CFA57D /* AWSAppSyncHTTPNetworkTransport.swift in Sources */,
 				74829974212F7F3E00CFA57D /* ResultOrPromise.swift in Sources */,
 				74829978212F7F3E00CFA57D /* RecordSet.swift in Sources */,
+				74187FE42136EDBE00523CA8 /* ValidateViewController.swift in Sources */,
 				7482997E212F7F3E00CFA57D /* Locking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

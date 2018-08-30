@@ -27,7 +27,7 @@ class ConversationViewController: UIViewController {
             let _ = Auth.auth().currentUser
         {
             
-            _ = self.manager.postMessage(conversationId: cid, message: msg)
+            _ = self.manager.postMessage(conversationId: cid, message: msg, sendPushNotifications: true)
             self.newMessage.text = ""
             
         }

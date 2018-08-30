@@ -63,7 +63,7 @@ struct TestUtils{
             }
             .then { _ -> Promises.Promise<User> in
                 print("registering \(Auth.auth().currentUser?.email?.description)")
-                return ApiManager.default.registerUserWithEmail()
+                return ApiManager.default.registerUserWithEmail(fcmToken: "fcmToken")
             }
             .then { user -> User in
                 try? Auth.auth().signOut()

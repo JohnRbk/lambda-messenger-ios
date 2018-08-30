@@ -108,10 +108,12 @@ public class ApiManager {
     }
 
     public func postMessage(conversationId: String,
-                            message: String) -> Promises.Promise<String> {
-
+                            message: String,
+                            sendPushNotifications: Bool = false) -> Promises.Promise<String> {
+        
         let post = PostMessageMutation(conversationId: conversationId,
-                                       message: message)
+                                       message: message,
+                                       sendPushNotifications: sendPushNotifications)
 
         let promise = Promises.Promise<String> { fulfill, reject in
 

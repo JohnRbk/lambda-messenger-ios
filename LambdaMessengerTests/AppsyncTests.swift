@@ -37,7 +37,7 @@ class AppsyncTests: XCTestCase {
                 return AuthManager.signIn(withEmail: email, password: password)
             }
             .then { _ in
-                manager.registerUserWithEmail()
+                manager.registerUserWithEmail(fcmToken: "fcmToken")
             }
             .then { _ in
                 XCTFail()
@@ -53,7 +53,7 @@ class AppsyncTests: XCTestCase {
         let manager = ApiManager.default
         let expectation = self.expectation(description: "threw error")
         
-        manager.registerUserWithEmail().then { user  in
+        manager.registerUserWithEmail(fcmToken: "fcmToken").then { user  in
             print(user)
             XCTFail()
         }.catch {error in
@@ -101,7 +101,7 @@ class AppsyncTests: XCTestCase {
                 return AuthManager.signIn(withEmail: email, password: password)
             }
             .then { _ -> Promises.Promise<User> in
-                return manager.registerUserWithEmail()
+                return manager.registerUserWithEmail(fcmToken: "fcmToken")
             }
             .then { _ -> Promises.Promise<User> in
                 return manager.lookupUserByEmail(email: "fake@example.com")
@@ -131,7 +131,7 @@ class AppsyncTests: XCTestCase {
 
         TestUtils.createFirebaseUserWithEmail(email: email, password: password, displayName: "John")
             .then { _ -> Promises.Promise<User> in
-                return manager.registerUserWithEmail()
+                return manager.registerUserWithEmail(fcmToken: "fcmToken")
             }
             .then { user in
                 XCTAssertEqual(user.email, email)
@@ -169,7 +169,7 @@ class AppsyncTests: XCTestCase {
                 self.log.info("Initiating")
                 return manager.initiateConversation(others: [john.userId])
             }
-            .then { cid in
+            .then { cid in                
                 return manager.postMessage(conversationId: cid, message:"hello")
                     .then { _ -> Promises.Promise<Firebase.User> in
                         try? Auth.auth().signOut()

@@ -64,7 +64,6 @@ class ComposeMessageViewController: UIViewController {
             let phoneNumber = newUserPhoneNumber.text,
             let parsedNum = self.phoneUtil.parse(phoneNumber) else {
             fatalError("Required fields not set")
-            return
         }
         
         self.sendButton.isEnabled = false
@@ -78,7 +77,8 @@ class ComposeMessageViewController: UIViewController {
             .then { cid in
                 self.log.info("Posting message to \(cid)")
                 return manager.postMessage(conversationId: cid,
-                                           message: greetingText)
+                                           message: greetingText,
+                                           sendPushNotifications: true)
                     .then{ _ in
                         return cid
                     }

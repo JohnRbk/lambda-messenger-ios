@@ -383,27 +383,29 @@ public final class RegisterUserWithPhoneNumberMutation: GraphQLMutation {
 
 public final class PostMessageMutation: GraphQLMutation {
   public static let operationString =
-    "mutation postMessage($conversationId: String!, $message: String!) {\n  postMessage(conversationId: $conversationId, message: $message) {\n    __typename\n    ...messageFields\n  }\n}"
+    "mutation postMessage($conversationId: String!, $message: String!, $sendPushNotifications: Boolean = false) {\n  postMessage(conversationId: $conversationId, message: $message, sendPushNotifications: $sendPushNotifications) {\n    __typename\n    ...messageFields\n  }\n}"
 
   public static var requestString: String { return operationString.appending(MessageFields.fragmentString) }
 
   public var conversationId: String
   public var message: String
+  public var sendPushNotifications: Bool?
 
-  public init(conversationId: String, message: String) {
+  public init(conversationId: String, message: String, sendPushNotifications: Bool? = nil) {
     self.conversationId = conversationId
     self.message = message
+    self.sendPushNotifications = sendPushNotifications
   }
 
   public var variables: GraphQLMap? {
-    return ["conversationId": conversationId, "message": message]
+    return ["conversationId": conversationId, "message": message, "sendPushNotifications": sendPushNotifications]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Mutation"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("postMessage", arguments: ["conversationId": GraphQLVariable("conversationId"), "message": GraphQLVariable("message")], type: .nonNull(.object(PostMessage.selections))),
+      GraphQLField("postMessage", arguments: ["conversationId": GraphQLVariable("conversationId"), "message": GraphQLVariable("message"), "sendPushNotifications": GraphQLVariable("sendPushNotifications")], type: .nonNull(.object(PostMessage.selections))),
     ]
 
     public var snapshot: Snapshot
