@@ -6,3 +6,5 @@
 #import "NBPhoneNumber.h"
 
 #import "AWSIoTMQTTClient.h"
+
+#import "AppSyncLogHelper.h"

@@ -109,7 +109,8 @@ class AppsyncTests: XCTestCase {
             .then { user in
                 XCTFail()
             }.catch { error in
-                if let apiManagerError = error as? LambdaMessengerError, apiManagerError.hashValue == LambdaMessengerError.userNotFoundError.hashValue{
+                if let apiManagerError = error as? LambdaMessengerError,
+                    apiManagerError.hashValue == LambdaMessengerError.userNotFoundError.hashValue{
                     expectation.fulfill()
                 }
                 else {

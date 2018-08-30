@@ -13,5 +13,6 @@
 #import "NBPhoneNumber.h"
 
 #import "AWSIoTMQTTClient.h"
+#import "AppSyncLogHelper.h"
 
 #endif /* LambdaMessengerTests_Bridging_Header_h */

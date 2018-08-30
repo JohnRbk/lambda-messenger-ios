@@ -48,7 +48,8 @@ class ConversationViewController: UIViewController {
         self.log.info("Showing keyboard")
         if let info = notification.userInfo, let rect = info[UIKeyboardFrameEndUserInfoKey] as? CGRect {
             
-            controlPaneBottomConstraint.constant = rect.size.height - 34
+            //controlPaneBottomConstraint.constant = rect.size.height - 34
+            controlPaneBottomConstraint.constant = rect.size.height 
         }
         
     }

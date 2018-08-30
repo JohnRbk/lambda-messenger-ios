@@ -24,7 +24,7 @@ extension Formatter {
     }()
 }
 
-public class OpenIdAuthProvider: AWSOIDCAuthProvider {
+public class OpenIdAuthProvider: AWSOIDCAuthProviderAsync {
     let log = XCGLogger.default
     public func getLatestAuthToken(_ callback: @escaping (String) -> Void) {
         

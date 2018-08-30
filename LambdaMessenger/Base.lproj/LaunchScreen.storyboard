@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lamb-large" translatesAutoresizingMaskIntoConstraints="NO" id="DcH-x2-bWX">
-                                <rect key="frame" x="40" y="263.5" width="335" height="100"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lamb-launchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="DcH-x2-bWX">
+                                <rect key="frame" x="25" y="263.5" width="350" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="p8G-VF-BE2"/>
                                 </constraints>
@@ -44,7 +44,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DcH-x2-bWX" secondAttribute="trailing" id="DjU-ye-elG"/>
                             <constraint firstItem="Gq1-Rw-qb0" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="I18-C6-UhN"/>
                             <constraint firstItem="DcH-x2-bWX" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-30" id="KWU-Hv-doW"/>
-                            <constraint firstItem="DcH-x2-bWX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="iRZ-dw-cjU"/>
+                            <constraint firstItem="DcH-x2-bWX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="iRZ-dw-cjU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -55,6 +55,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="lamb-large" width="147" height="123"/>
+        <image name="lamb-launchscreen" width="200" height="200"/>
     </resources>
 </document>
