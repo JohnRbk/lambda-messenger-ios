@@ -24,7 +24,6 @@ class PhoneNumberUtil {
             let formattedString: String = try phoneUtil.format(phoneNumber, numberFormat: .E164)
             
             let numDigits = phoneNumber.nationalNumber.stringValue.count
-            log.info("num digits in \(formattedString) are \(numDigits)")
             return numDigits == 10 ? formattedString : nil
         }
         catch let error as NSError {

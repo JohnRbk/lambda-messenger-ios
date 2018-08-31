@@ -145,6 +145,7 @@
 		741880AC2138590000523CA8 /* NetworkTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7418801B213855F000523CA8 /* NetworkTransport.swift */; };
 		741880AD2138590000523CA8 /* Locking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7418801C213855F000523CA8 /* Locking.swift */; };
 		741880AE2138590000523CA8 /* GraphQLResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7418801D213855F000523CA8 /* GraphQLResult.swift */; };
+		741880B22138E80A00523CA8 /* AuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741880B12138E80A00523CA8 /* AuthTests.swift */; };
 		7449B1C6211B6B27009F2EB8 /* ObjcExceptionBridging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1BD211B6B27009F2EB8 /* ObjcExceptionBridging.framework */; };
 		7449B1C7211B6B27009F2EB8 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1BE211B6B27009F2EB8 /* FirebaseAnalytics.framework */; };
 		7449B1C8211B6B27009F2EB8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1BF211B6B27009F2EB8 /* Alamofire.framework */; };
@@ -317,6 +318,7 @@
 		74188039213855F000523CA8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7418803A213855F000523CA8 /* AWSNetworkTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSNetworkTransport.swift; sourceTree = "<group>"; };
 		7418803B213855F000523CA8 /* AWSSQLLiteNormalizedCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSSQLLiteNormalizedCache.swift; sourceTree = "<group>"; };
+		741880B12138E80A00523CA8 /* AuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTests.swift; sourceTree = "<group>"; };
 		7449B1BC211B6B27009F2EB8 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Carthage/Build/iOS/Firebase.framework; sourceTree = SOURCE_ROOT; };
 		7449B1BD211B6B27009F2EB8 /* ObjcExceptionBridging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjcExceptionBridging.framework; path = Carthage/Build/iOS/ObjcExceptionBridging.framework; sourceTree = SOURCE_ROOT; };
 		7449B1BE211B6B27009F2EB8 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Carthage/Build/iOS/FirebaseAnalytics.framework; sourceTree = SOURCE_ROOT; };
@@ -457,6 +459,7 @@
 				74594A2D212879D5009208DC /* TestUtils.swift */,
 				7402C2C6211A850E00C3D536 /* Info.plist */,
 				747D3E43213177340089703E /* LambdaMessengerTests-Bridging-Header.h */,
+				741880B12138E80A00523CA8 /* AuthTests.swift */,
 			);
 			path = LambdaMessengerTests;
 			sourceTree = "<group>";
@@ -956,6 +959,7 @@
 				741880AB2138590000523CA8 /* RecordSet.swift in Sources */,
 				741880A42138590000523CA8 /* Record.swift in Sources */,
 				741880AD2138590000523CA8 /* Locking.swift in Sources */,
+				741880B22138E80A00523CA8 /* AuthTests.swift in Sources */,
 				741880962138590000523CA8 /* GraphQLQueryWatcher.swift in Sources */,
 				74187FDE2136EDBB00523CA8 /* ConversationViewController.swift in Sources */,
 				74188082213858C000523CA8 /* AWSNetworkTransport.swift in Sources */,
