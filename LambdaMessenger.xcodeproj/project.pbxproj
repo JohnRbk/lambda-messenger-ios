@@ -76,7 +76,6 @@
 		74188067213855F100523CA8 /* AWSAppSyncClientConflictResolutionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7418801E213855F000523CA8 /* AWSAppSyncClientConflictResolutionExtensions.swift */; };
 		74188068213855F100523CA8 /* AWSIoTCSR.m in Sources */ = {isa = PBXBuildFile; fileRef = 74188020213855F000523CA8 /* AWSIoTCSR.m */; };
 		74188069213855F100523CA8 /* AWSIoTMQTTClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 74188021213855F000523CA8 /* AWSIoTMQTTClient.m */; };
-		7418806A213855F100523CA8 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 74188025213855F000523CA8 /* LICENSE */; };
 		7418806B213855F100523CA8 /* AWSSRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 74188026213855F000523CA8 /* AWSSRWebSocket.m */; };
 		7418806C213855F100523CA8 /* AWSIoTWebSocketOutputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 74188027213855F000523CA8 /* AWSIoTWebSocketOutputStream.m */; };
 		7418806D213855F100523CA8 /* AWSMQTTSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 7418802C213855F000523CA8 /* AWSMQTTSession.m */; };
@@ -148,12 +147,10 @@
 		741880B22138E80A00523CA8 /* AuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741880B12138E80A00523CA8 /* AuthTests.swift */; };
 		7449B1C6211B6B27009F2EB8 /* ObjcExceptionBridging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1BD211B6B27009F2EB8 /* ObjcExceptionBridging.framework */; };
 		7449B1C7211B6B27009F2EB8 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1BE211B6B27009F2EB8 /* FirebaseAnalytics.framework */; };
-		7449B1C8211B6B27009F2EB8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1BF211B6B27009F2EB8 /* Alamofire.framework */; };
 		7449B1C9211B6B27009F2EB8 /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1C0211B6B27009F2EB8 /* FirebaseAuth.framework */; };
 		7449B1CA211B6B27009F2EB8 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1C1211B6B27009F2EB8 /* FirebaseCore.framework */; };
 		7449B1CD211B6BA8009F2EB8 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1C2211B6B27009F2EB8 /* XCGLogger.framework */; };
 		7449B1CE211B6BA8009F2EB8 /* XCGLogger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1C2211B6B27009F2EB8 /* XCGLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7449B1D3211B6BD4009F2EB8 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1BF211B6B27009F2EB8 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7449B1D5211B6BE7009F2EB8 /* ObjcExceptionBridging.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1BD211B6B27009F2EB8 /* ObjcExceptionBridging.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7449B1DA211B6C9F009F2EB8 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1D6211B6C74009F2EB8 /* nanopb.framework */; };
 		7449B1DC211B6CCC009F2EB8 /* FirebaseNanoPB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1DB211B6CCC009F2EB8 /* FirebaseNanoPB.framework */; };
@@ -221,7 +218,6 @@
 			files = (
 				746AB937211D6E18006D73BD /* AWSCore.framework in Embed Frameworks */,
 				746AB91C211C6307006D73BD /* libPhoneNumberiOS.framework in Embed Frameworks */,
-				7449B1D3211B6BD4009F2EB8 /* Alamofire.framework in Embed Frameworks */,
 				74E7FE8C211DC777004E8092 /* Promises.framework in Embed Frameworks */,
 				7449B1D5211B6BE7009F2EB8 /* ObjcExceptionBridging.framework in Embed Frameworks */,
 				7449B1CE211B6BA8009F2EB8 /* XCGLogger.framework in Embed Frameworks */,
@@ -322,7 +318,6 @@
 		7449B1BC211B6B27009F2EB8 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Carthage/Build/iOS/Firebase.framework; sourceTree = SOURCE_ROOT; };
 		7449B1BD211B6B27009F2EB8 /* ObjcExceptionBridging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjcExceptionBridging.framework; path = Carthage/Build/iOS/ObjcExceptionBridging.framework; sourceTree = SOURCE_ROOT; };
 		7449B1BE211B6B27009F2EB8 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Carthage/Build/iOS/FirebaseAnalytics.framework; sourceTree = SOURCE_ROOT; };
-		7449B1BF211B6B27009F2EB8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = SOURCE_ROOT; };
 		7449B1C0211B6B27009F2EB8 /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Carthage/Build/iOS/FirebaseAuth.framework; sourceTree = SOURCE_ROOT; };
 		7449B1C1211B6B27009F2EB8 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Carthage/Build/iOS/FirebaseCore.framework; sourceTree = SOURCE_ROOT; };
 		7449B1C2211B6B27009F2EB8 /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = Carthage/Build/iOS/XCGLogger.framework; sourceTree = SOURCE_ROOT; };
@@ -387,7 +382,6 @@
 				746ABA02211D76AD006D73BD /* Reachability.framework in Frameworks */,
 				7449B1E2211B6D3B009F2EB8 /* Protobuf.framework in Frameworks */,
 				7449B1CA211B6B27009F2EB8 /* FirebaseCore.framework in Frameworks */,
-				7449B1C8211B6B27009F2EB8 /* Alamofire.framework in Frameworks */,
 				74AA45002132DD59009C122B /* FirebaseMessaging.framework in Frameworks */,
 				747D3E3B212F890C0089703E /* FBLPromises.framework in Frameworks */,
 				746AB91B211C6307006D73BD /* libPhoneNumberiOS.framework in Frameworks */,
@@ -483,7 +477,6 @@
 				7449B1DD211B6CEB009F2EB8 /* GTMSessionFetcher.framework */,
 				7449B1DB211B6CCC009F2EB8 /* FirebaseNanoPB.framework */,
 				7449B1D6211B6C74009F2EB8 /* nanopb.framework */,
-				7449B1BF211B6B27009F2EB8 /* Alamofire.framework */,
 				7449B1BC211B6B27009F2EB8 /* Firebase.framework */,
 				7449B1BE211B6B27009F2EB8 /* FirebaseAnalytics.framework */,
 				7449B1C0211B6B27009F2EB8 /* FirebaseAuth.framework */,
@@ -762,7 +755,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7418806A213855F100523CA8 /* LICENSE in Resources */,
 				7402C2BA211A850E00C3D536 /* LaunchScreen.storyboard in Resources */,
 				7480B39F211B481F00A147E5 /* GoogleService-Info.plist in Resources */,
 				7402C2B7211A850E00C3D536 /* Assets.xcassets in Resources */,
