@@ -20,19 +20,19 @@ public struct Message {
     var timestamp: String
     var sender: User
     var conversationId: String
-    init(_ m: MessageFields){
+    init(_ m: MessageFields) {
         self.message = m.message
         self.sender = m.sender
         self.timestamp = m.timestamp
         self.conversationId = m.conversationId
     }
-    init(_ m: ConversationFields.Message){
+    init(_ m: ConversationFields.Message) {
         self.message = m.message
         self.sender = m.sender
         self.timestamp = m.timestamp
         self.conversationId = m.conversationId
     }
-    init(_ m: NewMessageSubscription.Data.NewMessage){
+    init(_ m: NewMessageSubscription.Data.NewMessage) {
         self.message = m.message
         self.sender = m.sender
         self.timestamp = m.timestamp
@@ -44,10 +44,10 @@ public struct Conversation {
     let conversationId: String
     var messages: [Message] = []
     var users: [User] = []
-    init(_ c: ConversationFields){
+    init(_ c: ConversationFields) {
         self.conversationId = c.conversationId
         for m in c.messages {
-            
+
             messages.append(Message(m))
         }
         for u in c.users {
@@ -71,7 +71,7 @@ extension MessageFields.Sender: User {
     public var phoneNumber: String? {
         return nil
     }
-    
+
     public var email: String? {
         return nil
     }
@@ -81,18 +81,18 @@ extension NewMessageSubscription.Data.NewMessage.Sender: User {
     public var phoneNumber: String? {
         return nil
     }
-    
+
     public var email: String? {
         return nil
     }
 }
 extension UpdateUserMutation.Data.UpdateUser: User {}
-extension ConversationFields.User : User {}
-extension ConversationFields.Message.Sender : User {
+extension ConversationFields.User: User {}
+extension ConversationFields.Message.Sender: User {
     public var phoneNumber: String? {
         return nil
     }
-    
+
     public var email: String? {
         return nil
     }

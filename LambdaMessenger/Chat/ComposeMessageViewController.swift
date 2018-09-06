@@ -19,20 +19,20 @@ class GreetingTextFieldDelegate: DependentTextFieldDelegate, FieldDependency {
 }
 
 class ComposeMessageViewController: UIViewController {
-    
+
     private let log = XCGLogger.default
-    
+
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var newUserPhoneNumber: UITextField!
     @IBOutlet weak var greeting: UITextField!
-    
+
     let phoneUtil = PhoneNumberUtil()
-    
+
     var phoneNumberDelegate: PhoneNumberTextFieldDelegate?
     var greetingDelegate: GreetingTextFieldDelegate?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let enableButton: () -> Void = {
@@ -43,21 +43,21 @@ class ComposeMessageViewController: UIViewController {
         }
         self.phoneNumberDelegate = PhoneNumberTextFieldDelegate(validStateCallback: enableButton, invalidStateCallback: disableButton)
         self.greetingDelegate = GreetingTextFieldDelegate(validStateCallback: enableButton, invalidStateCallback: disableButton)
-        
+
         self.newUserPhoneNumber.delegate = self.phoneNumberDelegate!
         self.greeting.delegate = self.greetingDelegate!
-        
+
         self.phoneNumberDelegate!.dependencies.append(self.greetingDelegate!)
         self.greetingDelegate!.dependencies.append(self.phoneNumberDelegate!)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.sendButton.isEnabled = false
     }
-    
+
     @IBAction func tappedDone(_ sender: Any) {
-        
+
         let manager = ApiManager.default
 
         guard let greetingText = greeting.text,
@@ -65,10 +65,10 @@ class ComposeMessageViewController: UIViewController {
             let parsedNum = self.phoneUtil.parse(phoneNumber) else {
             fatalError("Required fields not set")
         }
-        
+
         self.sendButton.isEnabled = false
         self.activityIndicator.startAnimating()
-        
+
         manager.lookupUserByPhoneNumber(phoneNumber: parsedNum)
             .then { user -> Promises.Promise<String> in
                 self.log.info("User \(Auth.auth().currentUser?.uid) is attempting to initiate conversation with \(user)")
@@ -79,48 +79,45 @@ class ComposeMessageViewController: UIViewController {
                 return manager.postMessage(conversationId: cid,
                                            message: greetingText,
                                            sendPushNotifications: true)
-                    .then{ _ in
+                    .then { _ in
                         return cid
                     }
             }
             .then { cid in
-               
+
                 self.dismiss(animated: true, completion: {
                     NotificationCenter.default.post(name: DashboardViewController.Events.initiateConversationModalComplete.notification, object: cid)
                 })
-                
+
             }
-            .catch{ error in
+            .catch { error in
                 self.sendButton.isEnabled = false
                 self.activityIndicator.stopAnimating()
-                
+
                 if let e = error as? LambdaMessengerError,
                     e == LambdaMessengerError.userNotFoundError {
                     let alert = UIAlertController(title: "User not found",
                                                  message: "Your friend \(parsedNum) doesn't have LambdaMessenger installed",
                                                  preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                    
+
                     self.present(alert, animated: true)
-                }
-                else {
+                } else {
                     let alert = UIAlertController(title: "Error",
                                                  message: "An error was detected. Please try again later.",
                                                  preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                    
+
                     self.present(alert, animated: true)
                 }
-                
+
                 self.log.error(error)
             }
-    
-        
+
     }
-    
+
     @IBAction func cancelAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    
+
 }

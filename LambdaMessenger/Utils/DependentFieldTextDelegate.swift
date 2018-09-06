@@ -15,33 +15,32 @@ protocol FieldDependency {
 
 class DependentTextFieldDelegate: NSObject, UITextFieldDelegate {
     var isValid: Bool = false {
-        willSet {            
+        willSet {
             if newValue == true && !dependencies.contains(where: { $0.isValid == false}) {
                 validStateCallback!()
-            }
-            else {
+            } else {
                 invalidStateCallback!()
             }
         }
     }
-    
+
     var dependencies: [FieldDependency] = []
-    
+
     init (validStateCallback: @escaping () -> Void,
           invalidStateCallback: @escaping () -> Void) {
         self.validStateCallback = validStateCallback
         self.invalidStateCallback = invalidStateCallback
     }
-    
+
     var validStateCallback: (() -> Void)?
-    
+
     var invalidStateCallback: (() -> Void)?
-    
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {       
+
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
         self.isValid = false
         return true
     }
-    
+
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
         if let value = textField.text {
             self.isValid = validate(value)
@@ -50,19 +49,19 @@ class DependentTextFieldDelegate: NSObject, UITextFieldDelegate {
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
-        
+
         if let text = textField.text, let textRange = Range(range, in: text) {
-            
+
             let newValue = text.replacingCharacters(in: textRange, with: string)
-            
+
             self.isValid = validate(newValue)
         }
-        
+
         return true
     }
-    
-    func validate(_ value: String) -> Bool{
+
+    func validate(_ value: String) -> Bool {
         return true
     }
-    
+
 }

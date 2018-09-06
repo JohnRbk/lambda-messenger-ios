@@ -11,5 +11,5 @@ import Foundation
 public enum LambdaMessengerError: Error {
     case systemError
     case userNotFoundError
+    case noAuthTokenAvailable
 }
-

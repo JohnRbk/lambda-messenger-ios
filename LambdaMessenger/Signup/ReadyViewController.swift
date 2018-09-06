@@ -9,13 +9,13 @@
 import UIKit
 
 class ReadyViewController: UIViewController {
-    
+
     @IBAction func ready(_ sender: Any) {
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        
+
         let initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "DashNav")
-        
+
         present(initialViewController, animated: true, completion: nil)
-        
+
     }
 }

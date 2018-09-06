@@ -26,17 +26,17 @@ extension Formatter {
 
 public class OpenIdAuthProvider: AWSOIDCAuthProviderAsync {
     let log = XCGLogger.default
-    public func getLatestAuthToken(_ callback: @escaping (String) -> Void) {
-        
+    public func getLatestAuthToken(_ callback: @escaping (String?, Error?) -> Void) {
+
         if let u = Auth.auth().currentUser {
             AuthManager.getIDToken(user: u).then { t in
-                callback(t)
+                callback(t, nil)
             }
         } else {
             // Probably want to diplay a message to the user asking them
             // to sign out and log back in
             log.error("Unable to get auth token")
-            callback("")
+            callback(nil, LambdaMessengerError.noAuthTokenAvailable)
         }
     }
 }
@@ -65,7 +65,7 @@ public class ApiManager {
     public typealias NewMessageSubscriptionPromise = Promises.Promise<AWSAppSyncSubscriptionWatcher<NewMessageSubscription>>
 
     public func subscribe(conversationId: String,
-                   callback: @escaping (Message)->Void) -> NewMessageSubscriptionPromise {
+                   callback: @escaping (Message) -> Void) -> NewMessageSubscriptionPromise {
 
         let newMessageSubscription = NewMessageSubscription(conversationId: conversationId)
 
@@ -75,16 +75,8 @@ public class ApiManager {
                                     transaction: ApolloStore.ReadTransaction?, error: Error?) {
 
                 switch (error, result) {
-                case let (.some(error), nil):                    
+                case let (.some(error), nil):
                     self.log.error(error)
-                    if let e = error as? AWSAppSyncSubscriptionError,
-                        e.recoverySuggestion == "Restart subscription request." {
-                        
-                        let n = ConversationViewController.Events.restartSub.notification
-                        NotificationCenter.default.post(name: n, object: conversationId)
-                        
-                        
-                    }
                 case let (nil, .some(result)) where result.errors != nil:
                     self.log.error(result.errors![0])
                 case let (nil, .some(result)) where result.data?.newMessage?.fragments.messageFields != nil:
@@ -110,7 +102,7 @@ public class ApiManager {
     public func postMessage(conversationId: String,
                             message: String,
                             sendPushNotifications: Bool = false) -> Promises.Promise<String> {
-        
+
         let post = PostMessageMutation(conversationId: conversationId,
                                        message: message,
                                        sendPushNotifications: sendPushNotifications)
@@ -139,21 +131,21 @@ public class ApiManager {
     }
 
     public func getConversationHistory() -> Promises.Promise<[Conversation]> {
-        
+
         let conversationHistory = GetConversationHistoryQuery()
-        
+
         let promise = Promises.Promise<[Conversation]> { fulfill, reject in
-            
+
             func historyHandler(result: GraphQLResult<GetConversationHistoryQuery.Data>?,
                                 error: Error?) {
-                
+
                 switch (error, result) {
                 case let (.some(error), nil):
                     reject(error)
                 case let (nil, .some(result)) where result.errors != nil:
                     reject(result.errors![0])
                 case let (nil, .some(result)) where result.data?.getConversationHistory != nil:
-                    
+
                     var conversations: [Conversation] = []
                     for conversationData in result.data!.getConversationHistory! {
                         if let fields = conversationData?.fragments.conversationFields {
@@ -166,24 +158,24 @@ public class ApiManager {
                     reject(LambdaMessengerError.systemError)
                 }
             }
-            
+
             self.log.info("Performing getConversationHistory query")
             self.client?.fetch(query: conversationHistory,
                                cachePolicy: .fetchIgnoringCacheData,
                                resultHandler: historyHandler)
-            
+
         }
-        
+
         return promise
-        
+
     }
 
     public func updateUser(displayName: String, fcmToken: String) -> Promises.Promise<User> {
-        
+
         let register = UpdateUserMutation(displayName: displayName, fcmToken: fcmToken)
-        
+
         let promise = Promises.Promise<User> { fulfill, reject in
-            
+
             func registerHandler(result: GraphQLResult<UpdateUserMutation.Data>?,
                                  error: Error?) {
                 switch (error, result) {
@@ -197,22 +189,22 @@ public class ApiManager {
                     reject(LambdaMessengerError.systemError)
                 }
             }
-            
+
             self.log.info("Performing updateUser mutation")
             self.client?.perform(mutation: register, resultHandler: registerHandler)
-            
+
         }
-        
+
         return promise
-        
+
     }
-    
+
     public func registerUserWithPhoneNumber(fcmToken: String) -> Promises.Promise<User> {
-        
+
         let register = RegisterUserWithPhoneNumberMutation(fcmToken: fcmToken)
-        
+
         let promise = Promises.Promise<User> { fulfill, reject in
-            
+
             func registerHandler(result: GraphQLResult<RegisterUserWithPhoneNumberMutation.Data>?,
                                  error: Error?) {
                 switch (error, result) {
@@ -226,16 +218,16 @@ public class ApiManager {
                     reject(LambdaMessengerError.systemError)
                 }
             }
-            
+
             self.log.info("Performing registerUserWithPhoneNumber mutation")
             self.client?.perform(mutation: register, resultHandler: registerHandler)
-            
+
         }
-        
+
         return promise
-        
+
     }
-    
+
     public func registerUserWithEmail(fcmToken: String) -> Promises.Promise<User> {
 
         let register = RegisterUserWithEmailMutation(fcmToken: fcmToken)
@@ -264,14 +256,14 @@ public class ApiManager {
         return promise
 
     }
-    
-    public func lookupUserByEmail(email: String) -> Promises.Promise<User>{
+
+    public func lookupUserByEmail(email: String) -> Promises.Promise<User> {
         let lookup = LookupUserByEmailQuery(email: email)
-        
+
         let promise = Promises.Promise<User> { fulfill, reject in
-            
+
             func emailLookupHandler(result: GraphQLResult<LookupUserByEmailQuery.Data>?,
-                                    error: Error?)  {
+                                    error: Error?) {
                 switch (error, result) {
                 case let (.some(error), nil):
                     self.log.error(error)
@@ -286,20 +278,20 @@ public class ApiManager {
                     reject(LambdaMessengerError.systemError)
                 }
             }
-            
+
             self.log.info("Performing lookupUserByEmail query")
             self.client?.fetch(query: lookup, resultHandler: emailLookupHandler)
         }
-        
+
         return promise
-        
+
     }
-    
-    public func getConversation(conversationId: String) -> Promises.Promise<Conversation>{
+
+    public func getConversation(conversationId: String) -> Promises.Promise<Conversation> {
         let lookup = GetConversationQuery(conversationId: conversationId)
-        
+
         let promise = Promises.Promise<Conversation> { fulfill, reject in
-            
+
             func conversationHandler(result: GraphQLResult<GetConversationQuery.Data>?,
                                     error: Error?) {
                 switch (error, result) {
@@ -309,7 +301,7 @@ public class ApiManager {
                     reject(result.errors![0])
                 case let (nil, .some(result))
                     where result.data?.getConversation.fragments.conversationFields != nil:
-                    
+
                     let c = Conversation(result.data!.getConversation.fragments.conversationFields)
                     fulfill(c)
                 case let (nil, .some(result)) where result.data?.getConversation == nil:
@@ -318,23 +310,23 @@ public class ApiManager {
                     reject(LambdaMessengerError.systemError)
                 }
             }
-            
+
             self.log.info("Performing getConversation query")
             self.client?.fetch(query: lookup,
                                cachePolicy: .fetchIgnoringCacheData,
                                resultHandler: conversationHandler)
-            
+
         }
-        
+
         return promise
-        
+
     }
-    
-    public func lookupUserByPhoneNumber(phoneNumber: String) -> Promises.Promise<User>{
+
+    public func lookupUserByPhoneNumber(phoneNumber: String) -> Promises.Promise<User> {
         let lookup = LookupUserByPhoneNumberQuery(phoneNumber: phoneNumber)
-        
+
         let promise = Promises.Promise<User> { fulfill, reject in
-            
+
             func phoneLookupHandler(result: GraphQLResult<LookupUserByPhoneNumberQuery.Data>?,
                                              error: Error?) {
                 switch (error, result) {
@@ -351,16 +343,16 @@ public class ApiManager {
                     reject(LambdaMessengerError.systemError)
                 }
             }
-            
+
             self.log.info("Performing lookupUserByPhoneNumber query")
             self.client?.fetch(query: lookup,
                                cachePolicy: .fetchIgnoringCacheData,
                                resultHandler: phoneLookupHandler)
-            
+
         }
-        
+
         return promise
-        
+
     }
 
     public func initiateConversation(others: [String]) -> Promises.Promise<String> {
