@@ -105,6 +105,11 @@ class ValidateViewController: UIViewController {
                 if let registeredName = Auth.auth().currentUser?.displayName,
                     let originalName = oldDisplayName, registeredName != originalName {
                     return ApiManager.default.updateUser(displayName: registeredName, fcmToken: fcmToken)
+                        .then { _ in
+                            // this is checked at app startup. If different, a call to
+                            // updateUser is made to save the new token
+                            UserDefaults.standard.set(fcmToken, forKey: "fcmToken")
+                        }
                 } else {
                     return Promises.Promise<User>(user)
                 }
