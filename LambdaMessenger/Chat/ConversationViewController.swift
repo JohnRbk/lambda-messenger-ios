@@ -40,7 +40,7 @@ class ConversationViewController: UIViewController {
 
     @objc func keyboardDisplayed(notification: NSNotification) {
         self.log.info("Showing keyboard")
-        if let info = notification.userInfo, let rect = info[UIKeyboardFrameEndUserInfoKey] as? CGRect {
+        if let info = notification.userInfo, let rect = info[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
 
             // on iPhoneX, the textfield needs to be bumped by 34 pixels
             controlPaneBottomConstraint.constant = rect.size.height - 34
@@ -62,7 +62,7 @@ class ConversationViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDisplayed), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDisplayed), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
         do {
             try reachability.startNotifier()

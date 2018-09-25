@@ -153,7 +153,6 @@
 		7449B1CE211B6BA8009F2EB8 /* XCGLogger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1C2211B6B27009F2EB8 /* XCGLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7449B1D5211B6BE7009F2EB8 /* ObjcExceptionBridging.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1BD211B6B27009F2EB8 /* ObjcExceptionBridging.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7449B1DA211B6C9F009F2EB8 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1D6211B6C74009F2EB8 /* nanopb.framework */; };
-		7449B1DC211B6CCC009F2EB8 /* FirebaseNanoPB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1DB211B6CCC009F2EB8 /* FirebaseNanoPB.framework */; };
 		7449B1DF211B6CEB009F2EB8 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1DD211B6CEB009F2EB8 /* GTMSessionFetcher.framework */; };
 		7449B1E0211B6CEB009F2EB8 /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1DE211B6CEB009F2EB8 /* GoogleToolboxForMac.framework */; };
 		7449B1E2211B6D3B009F2EB8 /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7449B1E1211B6D3A009F2EB8 /* Protobuf.framework */; };
@@ -322,7 +321,6 @@
 		7449B1C1211B6B27009F2EB8 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Carthage/Build/iOS/FirebaseCore.framework; sourceTree = SOURCE_ROOT; };
 		7449B1C2211B6B27009F2EB8 /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = Carthage/Build/iOS/XCGLogger.framework; sourceTree = SOURCE_ROOT; };
 		7449B1D6211B6C74009F2EB8 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Carthage/Build/iOS/nanopb.framework; sourceTree = SOURCE_ROOT; };
-		7449B1DB211B6CCC009F2EB8 /* FirebaseNanoPB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseNanoPB.framework; path = Carthage/Build/iOS/FirebaseNanoPB.framework; sourceTree = SOURCE_ROOT; };
 		7449B1DD211B6CEB009F2EB8 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = Carthage/Build/iOS/GTMSessionFetcher.framework; sourceTree = SOURCE_ROOT; };
 		7449B1DE211B6CEB009F2EB8 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleToolboxForMac.framework; path = Carthage/Build/iOS/GoogleToolboxForMac.framework; sourceTree = SOURCE_ROOT; };
 		7449B1E1211B6D3A009F2EB8 /* Protobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Protobuf.framework; path = Carthage/Build/iOS/Protobuf.framework; sourceTree = SOURCE_ROOT; };
@@ -371,7 +369,6 @@
 				7449B1E0211B6CEB009F2EB8 /* GoogleToolboxForMac.framework in Frameworks */,
 				7449B1DA211B6C9F009F2EB8 /* nanopb.framework in Frameworks */,
 				7449B1C7211B6B27009F2EB8 /* FirebaseAnalytics.framework in Frameworks */,
-				7449B1DC211B6CCC009F2EB8 /* FirebaseNanoPB.framework in Frameworks */,
 				74AA45042132DFA5009C122B /* GoogleUtilities.framework in Frameworks */,
 				7449B1DF211B6CEB009F2EB8 /* GTMSessionFetcher.framework in Frameworks */,
 				746AB9FC211D768A006D73BD /* SQLite.framework in Frameworks */,
@@ -475,7 +472,6 @@
 				7449B1E1211B6D3A009F2EB8 /* Protobuf.framework */,
 				7449B1DE211B6CEB009F2EB8 /* GoogleToolboxForMac.framework */,
 				7449B1DD211B6CEB009F2EB8 /* GTMSessionFetcher.framework */,
-				7449B1DB211B6CCC009F2EB8 /* FirebaseNanoPB.framework */,
 				7449B1D6211B6C74009F2EB8 /* nanopb.framework */,
 				7449B1BC211B6B27009F2EB8 /* Firebase.framework */,
 				7449B1BE211B6B27009F2EB8 /* FirebaseAnalytics.framework */,
@@ -718,7 +714,7 @@
 				TargetAttributes = {
 					7402C2AB211A850B00C3D536 = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 0940;
+						LastSwiftMigration = 1000;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -727,6 +723,7 @@
 					};
 					7402C2BF211A850E00C3D536 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = 7402C2AB211A850B00C3D536;
 					};
 				};
@@ -1146,7 +1143,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LambdaMessenger/LambdaMessenger-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1179,7 +1176,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lambdamessenger.LambdaMessenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LambdaMessenger/LambdaMessenger-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1212,7 +1209,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lambdamessenger.LambdaMessengerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LambdaMessengerTests/LambdaMessengerTests-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LambdaMessenger.app/LambdaMessenger";
 			};
@@ -1246,7 +1243,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lambdamessenger.LambdaMessengerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LambdaMessengerTests/LambdaMessengerTests-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LambdaMessenger.app/LambdaMessenger";
 			};

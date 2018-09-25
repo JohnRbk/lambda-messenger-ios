@@ -41,7 +41,7 @@ class DependentTextFieldDelegate: NSObject, UITextFieldDelegate {
         return true
     }
 
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         if let value = textField.text {
             self.isValid = validate(value)
         }
